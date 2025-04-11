@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Martina Kenna</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #language-btn {
+      position: fixed;
+      top: 1.2rem;
+      left: 1.2rem;
+      z-index: 1001;
+      background: none;
+      border: none;
+      color: #f0f0f0;
+      cursor: pointer;
+    }
+
+    #language-btn img {
+      width: 24px;  /* Bandiera standard 24px x 16px */
+      height: 16px;
+    }
+
+    .avatar {
+      width: 160px;
+      border-radius: 50%;
+      display: block;
+      margin: 30px auto 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 24px; /* Più piccole delle precedenti */
+      height: 24px;
+    }
+
+    .social-icons img {
+      width: 100%;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.15);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 1rem;
+      z-index: 1000;
+      background: transparent;
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* Modifica link: colore viola */
+    .project-card a {
+      color: #9b59b6; /* Viola */
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+      color: #8e44ad; /* Colore viola più scuro per l'hover */
+    }
+
+    .project-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .project-content {
+      flex: 1;
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px;
+    }
+  </style>
+  <script>
+    function changeLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      applyLanguage();
+    }
+
+    function applyLanguage() {
+      const lang = localStorage.getItem('lang') || 'it';
+      const it = document.querySelectorAll('.lang-it');
+      const en = document.querySelectorAll('.lang-en');
+
+      it.forEach(e => e.style.display = lang === 'it' ? 'block' : 'none');
+      en.forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+
+      const flag = document.querySelector('#language-btn img');
+      if (flag) {
+        flag.src = lang === 'it' ? 'https://flagcdn.com/w40/it.png' : 'https://flagcdn.com/w40/gb.png';
+      }
+
+      const navAbout = document.querySelector('a[href="about.html"]');
+      const navProjects = document.querySelector('a[href="projects.html"]');
+      if (navAbout) navAbout.textContent = lang === 'it' ? 'Chi sono' : 'About';
+      if (navProjects) navProjects.textContent = lang === 'it' ? 'Progetti' : 'Projects';
+    }
+
+    window.onload = applyLanguage;
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">Chi sono</a>
+    <a href="projects.html">Progetti</a>
+  </nav>
+
+  <div id="language-btn" onclick="changeLanguage(localStorage.getItem('lang') === 'it' ? 'en' : 'it')">
+    <img src="https://flagcdn.com/w40/it.png" alt="Flag">
+  </div>
+
+  <main>
+    <img src="images/avatar.png" alt="Foto profilo" class="avatar">
+    <div class="social-icons">
+      <!-- Icona Mail -->
+      <a href="mailto:martinakenna03@gmail.com" title="Invia una mail">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="email icon"/>
+      </a>
+      <!-- Icona LinkedIn -->
+      <a href="https://www.linkedin.com/in/martina-kenna-03b552211" target="_blank" title="LinkedIn">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/linkedin.png" alt="linkedin icon"/>
+      </a>
+      <!-- Icona GitHub -->
+      <a href="https://github.com/MartinaKenna" target="_blank" title="GitHub">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/github.png" alt="github icon"/>
+      </a>
+    </div>
+
+    <div class="lang-it">
+      <h1>Ciao, benvenutə nel mio portfolio</h1>
+      <p>Appassionata di tecnologia e innovazione, sono da sempre incuriosita dal lato più intelligente e dinamico dell'informatica. Dopo aver conseguito la laurea triennale in Informatica presso l'Università di Milano-Bicocca nel Luglio 2024, ho intrapreso il percorso magistrale in Artificial Intelligence presso l'Alma Mater Studiorum di Bologna, per approfondire tematiche come algoritmi avanzati, Machine Learning, Computer Vision e modelli computazionali complessi.</p>
+    </div>
+
+    <div class="lang-en" style="display:none">
+      <h1>Hi, welcome to my portfolio</h1>
+      <p>Passionate about technology and innovation, I've always been fascinated by the intelligent and dynamic side of computer science. After completing my Bachelor's degree at the University of Milan-Bicocca in July 2024, I pursued a Master's in Artificial Intelligence in Bologna to deepen my knowledge of algorithms, Machine learning, Computer Vision and advanced computational models.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Martina Kenna | <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
+  </footer>
+</body>
+</html>

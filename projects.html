@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Martina Kenna</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #language-btn {
+      position: fixed;
+      top: 1.2rem;
+      left: 1.2rem;
+      z-index: 1001;
+      background: none;
+      border: none;
+      color: #f0f0f0;
+      cursor: pointer;
+    }
+
+    #language-btn img {
+      width: 24px;  /* Bandiera standard 24px x 16px */
+      height: 16px;
+    }
+
+    .project-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* Centra il testo a destra e mantiene l'immagine a sinistra */
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .project-content {
+      text-align: center; /* Centra il testo del progetto */
+      flex: 1; /* Fa in modo che il contenuto occupi tutto lo spazio rimanente */
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px;
+      text-align: center; /* Centra il titolo */
+    }
+
+    .project-card a {
+      color: #ffd700;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 1rem;
+      z-index: 1000;
+      background: transparent;
+      display: flex;
+      gap: 1rem;
+    }
+  </style>
+  <script>
+    function changeLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      applyLanguage();
+    }
+
+    function applyLanguage() {
+      const lang = localStorage.getItem('lang') || 'it';
+      const flag = document.querySelector('#language-btn img');
+      if (flag) {
+        flag.src = lang === 'it' ? 'https://flagcdn.com/w40/it.png' : 'https://flagcdn.com/w40/gb.png';
+      }
+
+      const it = document.querySelectorAll('.lang-it');
+      const en = document.querySelectorAll('.lang-en');
+
+      it.forEach(e => e.style.display = lang === 'it' ? 'block' : 'none');
+      en.forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+    }
+
+    window.onload = applyLanguage;
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">Chi sono</a>
+    <a href="projects.html">Progetti</a>
+  </nav>
+
+  <div id="language-btn" onclick="changeLanguage(localStorage.getItem('lang') === 'it' ? 'en' : 'it')">
+    <img src="https://flagcdn.com/w40/it.png" alt="Flag">
+  </div>
+
+  <main>
+    <div class="lang-it">
+      <h1>Progetti principali</h1>
+
+      <!-- Tablut AI come primo progetto -->
+      <div class="project-card">
+        <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
+        <div class="project-content">
+          <h3><a href="https://github.com/MartinaKenna/TablutAI">Tablut AI</a></h3>
+          <p>Client artificiale per il gioco Tablut, con strategie Minimax ed euristiche personalizzate per decision making efficiente.</p>
+        </div>
+      </div>
+
+      <!-- Stage come secondo progetto -->
+      <div class="project-card">
+        <img src="images/python.jpg" alt="Python" class="project-icon"> <!-- Immagine Python -->
+        <div class="project-content">
+          <h3>Stage - Estensione libreria Python "softpy"</h3>
+          <p>Sviluppo di estensioni per la libreria Python "softpy", focalizzandomi su sistemi basati sulla logica fuzzy e algoritmi genetici, migliorando le capacità di calcolo e ottimizzazione della libreria.</p>
+        </div>
+      </div>
+
+      <!-- SocialMesh come terzo progetto -->
+      <div class="project-card">
+        <img src="images/socialmesh.jpg" alt="SocialMesh demo" class="project-icon">
+        <div class="project-content">
+          <h3><a href="https://github.com/MartinaKenna/SocialMesh">SocialMesh</a></h3>
+          <p>App Android per eventi e social matching: geolocalizzazione, filtro utenti, visualizzazione su mappa (API Ticketmaster e Google Maps).</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Comparazione App E-commerce</h3>
+          <p>Analisi UX/UI e test di usabilità comparativi su Vinted, eBay e Wallapop, con valutazione statistica dei risultati.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Parser JSON</h3>
+          <p>Parser sviluppato in Prolog e Common Lisp per la lettura di strutture JSON complesse.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lang-en" style="display:none">
+      <h1>Main Projects</h1>
+
+      <!-- Tablut AI come primo progetto -->
+      <div class="project-card">
+        <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
+        <div class="project-content">
+          <h3><a href="https://github.com/MartinaKenna/TablutAI">Tablut AI</a></h3>
+          <p>Artificial Intelligence client for the Tablut board game, using Minimax strategies and custom heuristics for smart decision making.</p>
+        </div>
+      </div>
+
+      <!-- Stage come secondo progetto -->
+      <div class="project-card">
+        <img src="images/python.jpg" alt="Python" class="project-icon"> <!-- Immagine Python -->
+        <div class="project-content">
+          <h3>Internship - Extension of Python Library for "Fuzzy Systems"</h3>
+          <p>Development of extensions for the Python library 'softpy', focusing on fuzzy logic systems and genetic algorithms, enhancing the library's computational and optimization capabilities.</p>
+        </div>
+      </div>
+
+      <!-- SocialMesh come terzo progetto -->
+      <div class="project-card">
+        <img src="images/socialmesh.jpg" alt="SocialMesh demo" class="project-icon">
+        <div class="project-content">
+          <h3><a href="https://github.com/MartinaKenna/SocialMesh">SocialMesh</a></h3>
+          <p>Android app for event-based social matching: geolocation, user filters, and map view (Ticketmaster and Google Maps APIs).</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>E-commerce App Comparison</h3>
+          <p>UX/UI analysis and usability testing on Vinted, eBay and Wallapop, including statistical evaluation.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-content">
+          <h3>JSON Parser</h3>
+          <p>Custom parser in Prolog and Common Lisp for parsing complex JSON structures.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Martina Kenna | <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
+  </footer>
+</body>
+</html>
