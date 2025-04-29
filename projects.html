@@ -18,14 +18,14 @@
     }
 
     #language-btn img {
-      width: 24px;  /* Bandiera standard 24px x 16px */
+      width: 24px;
       height: 16px;
     }
 
     .project-card {
       display: flex;
       align-items: center;
-      justify-content: space-between; /* Centra il testo a destra e mantiene l'immagine a sinistra */
+      justify-content: space-between;
       background-color: #222;
       border-radius: 10px;
       padding: 20px;
@@ -46,13 +46,13 @@
     }
 
     .project-content {
-      text-align: center; /* Centra il testo del progetto */
-      flex: 1; /* Fa in modo che il contenuto occupi tutto lo spazio rimanente */
+      text-align: center;
+      flex: 1;
     }
 
     .project-card h3 {
       margin: 0 0 10px;
-      text-align: center; /* Centra il titolo */
+      text-align: center;
     }
 
     .project-card a {
@@ -114,14 +114,23 @@
       <h1>Progetti principali</h1>
 
       <div class="project-card">
+        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-icon">
+        <div class="project-content">
+          <h3>UniBo Motorsport Driverless – Perception</h3>
+          <p>Parte del team Perception della divisione Driverless di UniBo Motorsport, con focus su visione artificiale, YOLO, OpenVINO e triangolazione stereo per il riconoscimento ambientale in tempo reale.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
         <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
         <div class="project-content">
           <h3><a href="https://github.com/MartinaKenna/TablutArtificialPlayers">Tablut AI</a></h3>
           <p>Client artificiale per il gioco Tablut, con strategie Minimax ed euristiche personalizzate per decision making efficiente.</p>
         </div>
       </div>
+
       <div class="project-card">
-        <img src="images/python.jpg" alt="Python" class="project-icon"> <!-- Immagine Python -->
+        <img src="images/python.jpg" alt="Python" class="project-icon">
         <div class="project-content">
           <h3>Stage - Estensione libreria Python "softpy"</h3>
           <p>Sviluppo di estensioni per la libreria Python "softpy", focalizzandomi su sistemi basati sulla logica fuzzy e algoritmi genetici, migliorando le capacità di calcolo e ottimizzazione della libreria.</p>
@@ -153,6 +162,15 @@
 
     <div class="lang-en" style="display:none">
       <h1>Main Projects</h1>
+
+      <div class="project-card">
+        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-icon">
+        <div class="project-content">
+          <h3>UniBo Motorsport Driverless – Perception</h3>
+          <p>Member of the Perception team in the Driverless division of UniBo Motorsport, focusing on computer vision, YOLO, OpenVINO, and stereo triangulation for real-time environment recognition.</p>
+        </div>
+      </div>
+
       <div class="project-card">
         <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
         <div class="project-content">
@@ -161,16 +179,14 @@
         </div>
       </div>
 
-      <!-- Stage come secondo progetto -->
       <div class="project-card">
-        <img src="images/python.jpg" alt="Python" class="project-icon"> <!-- Immagine Python -->
+        <img src="images/python.jpg" alt="Python" class="project-icon">
         <div class="project-content">
           <h3>Internship - Extension of Python Library for "Fuzzy Systems"</h3>
           <p>Development of extensions for the Python library 'softpy', focusing on fuzzy logic systems and genetic algorithms, enhancing the library's computational and optimization capabilities.</p>
         </div>
       </div>
 
-      <!-- SocialMesh come terzo progetto -->
       <div class="project-card">
         <img src="images/socialmesh.jpg" alt="SocialMesh demo" class="project-icon">
         <div class="project-content">
