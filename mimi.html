@@ -10,7 +10,8 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background: linear-gradient(to bottom, #FFD700, #FF69B4);
+      /* Immagine di sfondo: salva il file come 'background.png' nella stessa cartella della pagina */
+      background: url('background.png') center center / cover no-repeat;
       font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
@@ -48,8 +49,8 @@
 </head>
 <body>
   <div id="balloons-container"></div>
-  <h1>🎉 Congratulazioni Mimi! 🎉</h1>
-  <p>Non ci speravamo più 😉</p>
+  <h1>🎓 Congratulazioni Mimi! 🎉</h1>
+  <p style="font-size:1.5em;">Non ci speravamo più 😉</p>
   <script>
     const colors = ['#FF5C5C','#FFB86C','#FFD56B','#88ED91','#5AC8FA','#A78BFA'];
     function createBalloon() {
