@@ -30,7 +30,8 @@
       color: #fff;
       text-shadow: 0 0 20px rgba(255,255,255,0.9);
       opacity: 0;
-      animation: pop 1s ease-out 0.5s forwards;
+      /* Animation after balloon start delay + 5s = 7s total */
+      animation: pop 1s ease-out 7s forwards;
       z-index: 3;
     }
     @keyframes pop {
@@ -41,7 +42,7 @@
     #screenshot-container {
       width: 95%;
       max-width: 700px;
-      margin-top: 200px; /* spazio sotto il punteggio */
+      margin-top: 200px;
       margin-bottom: 1rem;
       border: 4px solid rgba(255,255,255,0.8);
       border-radius: 8px;
@@ -119,8 +120,11 @@
       setTimeout(() => balloon.remove(), 8000);
     }
     window.onload = () => {
-      for (let i = 0; i < 30; i++) setTimeout(createBalloon, i * 250);
-      setInterval(createBalloon, 800);
+      // Delay balloon start by 2 seconds
+      setTimeout(() => {
+        for (let i = 0; i < 30; i++) setTimeout(createBalloon, i * 250);
+        setInterval(createBalloon, 800);
+      }, 2000);
     };
   </script>
 </body>
