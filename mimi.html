@@ -24,20 +24,20 @@
       position: absolute;
       top: 20%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0);
+      transform: translate(-50%, -50%) scale(0) rotate(0deg);
       font-size: 8rem;
       font-weight: bold;
       color: #fff;
       text-shadow: 0 0 20px rgba(255,255,255,0.9);
       opacity: 0;
-      /* Animation after balloon start delay + 5s = 7s total */
-      animation: pop 1s ease-out 7s forwards;
+      /* Animation: delay longer and add rotation */
+      animation: pop 1s ease-out 10s forwards;
       z-index: 3;
     }
     @keyframes pop {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-      60% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+      60% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(360deg); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(360deg); }
     }
     #screenshot-container {
       width: 95%;
@@ -120,7 +120,7 @@
       setTimeout(() => balloon.remove(), 8000);
     }
     window.onload = () => {
-      // Delay balloon start by 2 seconds
+      // Start balloons after 2 seconds
       setTimeout(() => {
         for (let i = 0; i < 30; i++) setTimeout(createBalloon, i * 250);
         setInterval(createBalloon, 800);
