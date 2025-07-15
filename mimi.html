@@ -24,20 +24,31 @@
       position: absolute;
       top: 20%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0) rotate(0deg);
+      transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
       font-size: 8rem;
       font-weight: bold;
       color: #fff;
       text-shadow: 0 0 20px rgba(255,255,255,0.9);
-      opacity: 0;
-      /* Animated after 3s total wait */
-      animation: pop 1s ease-out 3s forwards;
+      opacity: 1;
+      /* Spin for 3s, then pop animation */
+      animation: spin 3s linear forwards, pop 1s ease-out 3s forwards;
       z-index: 3;
     }
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) scale(0.5) rotate(360deg); }
+    }
     @keyframes pop {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
-      60% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(360deg); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+      0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(360deg);
+      }
+      60% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(360deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+      }
+      opacity: 1;
     }
     #screenshot-container {
       width: 95%;
@@ -120,7 +131,6 @@
       setTimeout(() => balloon.remove(), 8000);
     }
     window.onload = () => {
-      // Start balloons immediately
       for (let i = 0; i < 30; i++) setTimeout(createBalloon, i * 250);
       setInterval(createBalloon, 800);
     };
