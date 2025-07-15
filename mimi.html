@@ -30,8 +30,8 @@
       color: #fff;
       text-shadow: 0 0 20px rgba(255,255,255,0.9);
       opacity: 0;
-      /* Animation: delay fixed to 6s */
-      animation: pop 1s ease-out 6s forwards;
+      /* Animated after 3s total wait */
+      animation: pop 1s ease-out 3s forwards;
       z-index: 3;
     }
     @keyframes pop {
@@ -120,11 +120,9 @@
       setTimeout(() => balloon.remove(), 8000);
     }
     window.onload = () => {
-      // Start balloons after 2 seconds
-      setTimeout(() => {
-        for (let i = 0; i < 30; i++) setTimeout(createBalloon, i * 250);
-        setInterval(createBalloon, 800);
-      }, 2000);
+      // Start balloons immediately
+      for (let i = 0; i < 30; i++) setTimeout(createBalloon, i * 250);
+      setInterval(createBalloon, 800);
     };
   </script>
 </body>
