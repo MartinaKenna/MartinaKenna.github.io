@@ -1,127 +1,133 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Festa 🎉</title>
+  <title>Martina Kenna</title>
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #FFD700, #FF69B4);
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    #score {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      font-size: 8rem;
-      font-weight: bold;
-      color: #fff;
-      text-shadow: 0 0 20px rgba(255,255,255,0.9);
-      opacity: 0;
-      animation: pop 1s ease-out 0.5s forwards;
-      z-index: 3;
-    }
-    @keyframes pop {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-      60% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
-      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    #screenshot-container {
-      width: 95%;
-      max-width: 700px;
-      margin-top: 200px; /* spazio sotto il punteggio */
-      margin-bottom: 1rem;
-      border: 4px solid rgba(255,255,255,0.8);
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      background: rgba(255,255,255,0.2);
-      z-index: 1;
-    }
-    #screenshot-container img {
-      width: 100%;
-      display: block;
-      border-radius: 6px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin: 0.5rem 0 0.25rem;
-      text-align: center;
-      z-index: 1;
-    }
-    p {
-      font-size: 1.2rem;
-      margin: 0;
-      text-align: center;
-      z-index: 1;
-    }
-    #balloons-container {
+    #language-btn {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 2;
+      top: 1.2rem;
+      left: 1.2rem;
+      z-index: 1001;
+      background: none;
+      border: none;
+      color: #f0f0f0;
+      cursor: pointer;
     }
-    .balloon {
-      position: absolute;
-      bottom: -150px;
+
+    #language-btn img {
+      width: 24px;  /* Bandiera standard 24px x 16px */
+      height: 16px;
+    }
+
+    .avatar {
+      width: 160px;
       border-radius: 50%;
-      opacity: 0.8;
-      animation: rise infinite ease-in;
-      z-index: 2;
+      display: block;
+      margin: 30px auto 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
     }
-    @keyframes rise {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-120vh) scale(1.2); }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
-    @media (max-width: 480px) {
-      #score { font-size: 6rem; top: 15%; }
-      h1 { font-size: 2rem; }
-      p { font-size: 1rem; }
-      #screenshot-container { border-width: 3px; margin-top: 150px; }
+
+    .social-icons a {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+    }
+
+    .social-icons img {
+      width: 100%;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: white;
+    }
+
+    footer a {
+      color: #ccc; /* Colore più scuro, come nelle altre parti della pagina */
+      text-decoration: none; /* Rimuove la sottolineatura di default */
+    }
+
+    footer a:hover {
+      text-decoration: underline; /* Sottolinea solo al passaggio del mouse */
+      color: #ffd700; /* Colore giallo alla sottolineatura (opzionale, puoi modificarlo) */
     }
   </style>
+  <script>
+    function changeLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      applyLanguage();
+    }
+
+    function applyLanguage() {
+      const lang = localStorage.getItem('lang') || 'it';
+      const it = document.querySelectorAll('.lang-it');
+      const en = document.querySelectorAll('.lang-en');
+
+      it.forEach(e => e.style.display = lang === 'it' ? 'block' : 'none');
+      en.forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+
+      const flag = document.querySelector('#language-btn img');
+      if (flag) {
+        flag.src = lang === 'it' ? 'https://flagcdn.com/w40/it.png' : 'https://flagcdn.com/w40/gb.png';
+      }
+
+      const navAbout = document.querySelector('a[href="about.html"]');
+      const navProjects = document.querySelector('a[href="projects.html"]');
+      if (navAbout) navAbout.textContent = lang === 'it' ? 'Chi sono' : 'About';
+      if (navProjects) navProjects.textContent = lang === 'it' ? 'Progetti' : 'Projects';
+    }
+
+    window.onload = applyLanguage;
+  </script>
 </head>
 <body>
-  <div id="balloons-container"></div>
-  <div id="score">87</div>
-  <div id="screenshot-container">
-    <img src="background.png" alt="Screenshot laurea" />
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">Chi sono</a>
+    <a href="projects.html">Progetti</a>
+  </nav>
+
+  <div id="language-btn" onclick="changeLanguage(localStorage.getItem('lang') === 'it' ? 'en' : 'it')">
+    <img src="https://flagcdn.com/w40/it.png" alt="Flag">
   </div>
-  <h1>🎓 Congratulazioni Mimi! 🎉</h1>
-  <p>Non ci speravamo più 😉</p>
-  <script>
-    const colors = ['#FF5C5C','#FFB86C','#FFD56B','#88ED91','#5AC8FA','#A78BFA'];
-    function createBalloon() {
-      const balloon = document.createElement('div');
-      balloon.classList.add('balloon');
-      const size = Math.random() * 25 + 30;
-      balloon.style.width = size + 'px';
-      balloon.style.height = (size * 1.4) + 'px';
-      balloon.style.left = Math.random() * 100 + '%';
-      balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
-      balloon.style.animationDuration = (Math.random() * 3 + 5) + 's';
-      document.getElementById('balloons-container').appendChild(balloon);
-      setTimeout(() => balloon.remove(), 8000);
-    }
-    window.onload = () => {
-      for (let i = 0; i < 30; i++) setTimeout(createBalloon, i * 250);
-      setInterval(createBalloon, 800);
-    };
-  </script>
+
+  <main>
+    <div class="lang-it">
+      <h1>Percorso e ispirazioni</h1>
+      <p>Appassionata di tecnologia e innovazione, sono da sempre incuriosita dal lato più intelligente e dinamico dell'informatica. Dopo la laurea triennale in Informatica presso l'Università di Milano-Bicocca, ho intrapreso il percorso magistrale in Artificial Intelligence a Bologna per approfondire tematiche come algoritmi avanzati, machine learning, computer vision e modelli computazionali complessi.</p>
+      <p>Mi piacciono i progetti multidisciplinari, l'analisi critica di interfacce, l'ottimizzazione e la prototipazione veloce. Ho esperienza in lavoro di gruppo, presentazioni pubbliche, competizioni accademiche e studio di ambienti real-time ed embedded.</p>
+      <p>La mia tesi e il mio stage sono stati focalizzati sullo sviluppo e integrazione di algoritmi evolutivi e basati su popolazioni per il miglioramento di sistemi di controllo fuzzy. In particolare, ho lavorato su un'estensione della libreria Python "softpy", occupandomi della creazione di sistemi di controllo fuzzy di tipo Mamdani e Sugeno. L'obiettivo era migliorare le capacità decisionali dei sistemi basati sulla logica fuzzy, con particolare attenzione alla gestione di regole fuzzy e mutazioni genetiche. Il mio lavoro ha richiesto la documentazione completa e la generazione di test unitari per garantire l'affidabilità e la robustezza dei moduli sviluppati.</p>
+    </div>
+
+    <div class="lang-en" style="display:none">
+      <h1>Background and Inspiration</h1>
+      <p>Passionate about technology and innovation, I've always been fascinated by the intelligent and dynamic side of computer science. After completing my Bachelor's degree at the University of Milan-Bicocca, I pursued a Master's in Artificial Intelligence in Bologna to deepen my knowledge of advanced algorithms, machine learning, computer vision, and computational models.</p>
+      <p>I enjoy multidisciplinary projects, UI/UX analysis, optimization, and rapid prototyping. I have experience in teamwork, public speaking, academic competitions, and working with real-time and embedded systems.</p>
+      <p>My Bachelor's thesis and internship focused on the development and integration of evolutionary and population-based algorithms to enhance fuzzy control systems. Specifically, I worked on extending the Python library "softpy", creating Mamdani and Sugeno type fuzzy control systems aimed at improving decision-making capabilities based on fuzzy logic. My work included managing fuzzy rules and genetic mutations, and I ensured full documentation and unit tests for reliability and robustness.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Martina Kenna | <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
+  </footer>
 </body>
 </html>
