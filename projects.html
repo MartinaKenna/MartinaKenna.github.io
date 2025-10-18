@@ -2,101 +2,102 @@
 <html lang="it">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>Martina Kenna</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    #language-btn {
-      position: fixed;
-      top: 1.2rem;
-      left: 1.2rem;
-      z-index: 1001;
-      background: none;
-      border: none;
-      color: #f0f0f0;
-      cursor: pointer;
+<meta charset="UTF-8">
+<title>Martina Kenna</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  #language-btn {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 1001;
+    background: none;
+    border: none;
+    color: #f0f0f0;
+    cursor: pointer;
+  }
+
+  #language-btn img {
+    width: 24px;
+    height: 16px;
+  }
+
+  .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .project-content {
+    text-align: center;
+    flex: 1;
+  }
+
+  .project-card h3 {
+    margin: 0 0 10px;
+    text-align: center;
+  }
+
+  .project-card a {
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+
+  .project-card a:hover {
+    text-decoration: underline;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: 1rem;
+    z-index: 1000;
+    background: transparent;
+    display: flex;
+    gap: 1rem;
+  }
+</style>
+
+<script>
+  function changeLanguage(lang) {
+    localStorage.setItem('lang', lang);
+    applyLanguage();
+  }
+
+  function applyLanguage() {
+    const lang = localStorage.getItem('lang') || 'it';
+    const flag = document.querySelector('#language-btn img');
+    if (flag) {
+      flag.src = lang === 'it' ? 'https://flagcdn.com/w40/it.png' : 'https://flagcdn.com/w40/gb.png';
     }
 
-    #language-btn img {
-      width: 24px;
-      height: 16px;
-    }
+    const it = document.querySelectorAll('.lang-it');
+    const en = document.querySelectorAll('.lang-en');
 
-    .project-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #222;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-    }
+    it.forEach(e => e.style.display = lang === 'it' ? 'block' : 'none');
+    en.forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
+  }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-icon {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .project-content {
-      text-align: center;
-      flex: 1;
-    }
-
-    .project-card h3 {
-      margin: 0 0 10px;
-      text-align: center;
-    }
-
-    .project-card a {
-      color: #ffd700;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    .project-card a:hover {
-      text-decoration: underline;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      right: 1rem;
-      z-index: 1000;
-      background: transparent;
-      display: flex;
-      gap: 1rem;
-    }
-  </style>
-  <script>
-    function changeLanguage(lang) {
-      localStorage.setItem('lang', lang);
-      applyLanguage();
-    }
-
-    function applyLanguage() {
-      const lang = localStorage.getItem('lang') || 'it';
-      const flag = document.querySelector('#language-btn img');
-      if (flag) {
-        flag.src = lang === 'it' ? 'https://flagcdn.com/w40/it.png' : 'https://flagcdn.com/w40/gb.png';
-      }
-
-      const it = document.querySelectorAll('.lang-it');
-      const en = document.querySelectorAll('.lang-en');
-
-      it.forEach(e => e.style.display = lang === 'it' ? 'block' : 'none');
-      en.forEach(e => e.style.display = lang === 'en' ? 'block' : 'none');
-    }
-
-    window.onload = applyLanguage;
-  </script>
+  window.onload = applyLanguage;
+</script>
 </head>
 <body>
   <nav>
@@ -110,102 +111,75 @@
   </div>
 
   <main>
+    <!-- VERSIONE ITALIANA -->
     <div class="lang-it">
       <h1>Progetti principali</h1>
 
       <div class="project-card">
-        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-icon">
+        <img src="images/datalogic.jpg" alt="Datalogic USA " class="project-icon">
         <div class="project-content">
-          <h3>UniBo Motorsport Driverless – Perception</h3>
-          <p>Parte del team Perception della divisione Driverless di UniBo Motorsport, con focus su visione artificiale, YOLO, OpenVINO e triangolazione stereo per il riconoscimento ambientale in tempo reale.</p>
+          <h3>R&D Intern – Datalogic USA, DLLABS (Eugene, Oregon)</h3>
+          <p>Tirocinio di ricerca e sviluppo presso il centro R&D Datalogic Labs negli Stati Uniti, con attività di supporto ai team di innovazione e sviluppo software per progetti avanzati di automazione e intelligenza artificiale.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
+        <img src="images/ipcv.jpg" alt="IPCV Project" class="project-icon">
         <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/TablutArtificialPlayers">Tablut AI</a></h3>
-          <p>Client artificiale per il gioco Tablut, con strategie Minimax ed euristiche personalizzate per decision making efficiente.</p>
+          <h3>Image Processing and Computer Vision Projects – Esame IPCV</h3>
+          <p>Sviluppati due progetti esplorando approcci classici e deep learning alla visione artificiale. Implementata una pipeline classica per il rilevamento di libri su una libreria e una CNN personalizzata (ResNet-18) per la classificazione di immagini di animali, con studio di ablation in PyTorch.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="images/python.jpg" alt="Python" class="project-icon">
+        <img src="images/scheduling.jpg" alt="STS Optimization" class="project-icon">
         <div class="project-content">
-          <h3>Stage - Estensione libreria Python "softpy"</h3>
-          <p>Sviluppo di estensioni per la libreria Python "softpy", focalizzandomi su sistemi basati sulla logica fuzzy e algoritmi genetici, migliorando le capacità di calcolo e ottimizzazione della libreria.</p>
+          <h3>Sports Tournament Scheduling Optimization</h3>
+          <p>Analizzati e confrontati quattro approcci di ottimizzazione — Constraint Programming, SAT, SMT e Mixed-Integer Programming — per risolvere il problema di schedulazione di tornei sportivi, minimizzando squilibri casa-trasferta e garantendo una distribuzione equa delle partite.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="images/socialmesh.jpg" alt="SocialMesh demo" class="project-icon">
+        <img src="images/deswirling.jpg" alt="Image Deswirling" class="project-icon">
         <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/SocialMesh">SocialMesh</a></h3>
-          <p>App Android per eventi e social matching: geolocalizzazione, filtro utenti, visualizzazione su mappa (API Ticketmaster e Google Maps).</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Comparazione App E-commerce</h3>
-          <p>Analisi UX/UI e test di usabilità comparativi su Vinted, eBay e Wallapop, con valutazione statistica dei risultati.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Parser JSON</h3>
-          <p>Parser sviluppato in Prolog e Common Lisp per la lettura di strutture JSON complesse.</p>
+          <h3>Image Deswirling con Deep Learning</h3>
+          <p>Progettati modelli deep learning per identificare e correggere distorsioni di tipo swirl in immagini con parametri variabili (centro, raggio, intensità). Implementata una pipeline end-to-end per il ripristino visivo tramite architetture neurali personalizzate in TensorFlow.</p>
         </div>
       </div>
     </div>
 
+    <!-- VERSIONE INGLESE -->
     <div class="lang-en" style="display:none">
       <h1>Main Projects</h1>
 
       <div class="project-card">
-        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-icon">
         <div class="project-content">
-          <h3>UniBo Motorsport Driverless – Perception</h3>
-          <p>Member of the Perception team in the Driverless division of UniBo Motorsport, focusing on computer vision, YOLO, OpenVINO, and stereo triangulation for real-time environment recognition.</p>
+          <h3>R&D Intern – Datalogic USA, DLLABS (Eugene, Oregon)</h3>
+          <p>Research and Development internship at Datalogic Labs in the United States, contributing to innovation and software development initiatives within the R&D division, focused on automation and artificial intelligence solutions.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
+        <img src="images/ipcv.jpg" alt="IPCV Project" class="project-icon">
         <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/TablutArtificialPlayers">Tablut AI</a></h3>
-          <p>Artificial Intelligence client for the Tablut board game, using Minimax strategies and custom heuristics for smart decision making.</p>
+          <h3>Image Processing and Computer Vision Projects – IPCV Exam</h3>
+          <p>Developed two projects combining classical and deep learning approaches to computer vision. Implemented a traditional pipeline for book detection on a bookshelf and fine-tuned a ResNet-18 alongside a custom CNN for pet classification, performing an ablation study using PyTorch.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="images/python.jpg" alt="Python" class="project-icon">
+        <img src="images/scheduling.jpg" alt="STS Optimization" class="project-icon">
         <div class="project-content">
-          <h3>Internship - Extension of Python Library for "Fuzzy Systems"</h3>
-          <p>Development of extensions for the Python library 'softpy', focusing on fuzzy logic systems and genetic algorithms, enhancing the library's computational and optimization capabilities.</p>
+          <h3>Sports Tournament Scheduling Optimization</h3>
+          <p>Developed and compared four optimization approaches — Constraint Programming, SAT, SMT, and Mixed-Integer Programming — to solve the sports tournament scheduling problem, minimizing home–away imbalances and ensuring fair match distribution across teams.</p>
         </div>
       </div>
 
       <div class="project-card">
-        <img src="images/socialmesh.jpg" alt="SocialMesh demo" class="project-icon">
+        <img src="images/deswirling.jpg" alt="Image Deswirling" class="project-icon">
         <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/SocialMesh">SocialMesh</a></h3>
-          <p>Android app for event-based social matching: geolocation, user filters, and map view (Ticketmaster and Google Maps APIs).</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>E-commerce App Comparison</h3>
-          <p>UX/UI analysis and usability testing on Vinted, eBay and Wallapop, including statistical evaluation.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>JSON Parser</h3>
-          <p>Custom parser in Prolog and Common Lisp for parsing complex JSON structures.</p>
+          <h3>Image Deswirling with Deep Learning</h3>
+          <p>Built deep learning models to detect and reverse swirl distortions in images with varying parameters (center, radius, intensity). Designed an end-to-end restoration pipeline with custom neural architectures using TensorFlow for robust image correction.</p>
         </div>
       </div>
     </div>
