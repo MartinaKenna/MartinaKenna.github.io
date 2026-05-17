@@ -15,6 +15,7 @@
       --text: #f3f3f3;
       --muted: #a1a1aa;
       --accent: #9b59b6;
+      --accent-dark: #7f3fa3;
       --border: rgba(255, 255, 255, 0.08);
     }
 
@@ -27,30 +28,39 @@
       min-height: 100vh;
       font-family: Inter, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(155, 89, 182, 0.14), transparent 32rem),
+        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 32rem),
         var(--bg);
       color: var(--text);
       line-height: 1.65;
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      right: 1rem;
-      z-index: 1000;
+      width: 100%;
+      padding: 1.5rem 7%;
       display: flex;
-      gap: 1rem;
-      padding: 1rem 0;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    nav a {
+    .logo {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
       color: var(--muted);
       text-decoration: none;
       font-size: 0.95rem;
       transition: color 0.2s ease;
     }
 
-    nav a:hover {
+    .nav-links a:hover {
       color: var(--text);
     }
 
@@ -73,9 +83,9 @@
     }
 
     main {
-      width: min(900px, 92%);
+      width: min(950px, 92%);
       margin: 0 auto;
-      padding: 7rem 0 4rem;
+      padding: 5rem 0 4rem;
     }
 
     .page-header {
@@ -85,20 +95,24 @@
     .eyebrow {
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       font-size: 0.78rem;
-      margin-bottom: 0.7rem;
+      margin-bottom: 1rem;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
-      line-height: 1.05;
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 0.95;
+    }
+
+    .accent {
+      color: var(--accent);
     }
 
     .subtitle {
       max-width: 760px;
-      margin-top: 1.2rem;
+      margin-top: 1.4rem;
       color: var(--muted);
       font-size: 1.08rem;
     }
@@ -106,15 +120,16 @@
     .content-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: 28px;
       padding: 2rem;
-      margin-top: 1.2rem;
+      margin-top: 1.4rem;
       box-shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
     }
 
     .content-card p {
       color: var(--muted);
       margin: 0 0 1.2rem;
+      font-size: 1.02rem;
     }
 
     .content-card p:last-child {
@@ -123,48 +138,49 @@
 
     .highlight {
       color: var(--text);
+      font-weight: 500;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1.4rem;
-    }
-
-    .mini-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.2rem;
-    }
-
-    .mini-card h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1rem;
-      color: var(--text);
-    }
-
-    .mini-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .tags {
+    .buttons {
       display: flex;
+      gap: 1rem;
+      margin-top: 2.4rem;
       flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1.4rem;
     }
 
-    .tag {
-      padding: 0.5rem 0.8rem;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+      text-decoration: none;
+      padding: 0.9rem 1.35rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.95rem;
+      transition: 0.22s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
+    }
+
+    .btn-secondary {
       border: 1px solid var(--border);
-      color: #d8d8d8;
-      font-size: 0.9rem;
+      color: white;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(155, 89, 182, 0.5);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     footer {
@@ -189,20 +205,23 @@
 
     @media (max-width: 760px) {
       nav {
-        right: 0.8rem;
-        gap: 0.75rem;
+        padding: 1.3rem 5%;
+      }
+
+      .nav-links {
+        gap: 1rem;
       }
 
       main {
-        padding-top: 6rem;
+        padding-top: 4rem;
       }
 
       .content-card {
         padding: 1.4rem;
       }
 
-      .grid {
-        grid-template-columns: 1fr;
+      .buttons {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -244,9 +263,12 @@
 
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">Chi sono</a>
-    <a href="projects.html">Progetti</a>
+    <div class="logo">Martina Kenna</div>
+
+    <div class="nav-links">
+      <a href="about.html">Chi sono</a>
+      <a href="projects.html">Progetti</a>
+    </div>
   </nav>
 
   <button
@@ -261,74 +283,45 @@
     <div class="lang-it">
       <section class="page-header">
         <p class="eyebrow">About</p>
-        <h1>Percorso e interessi</h1>
+        <h1>
+          Percorso <br>
+          <span class="accent">e interessi</span>
+        </h1>
+
         <p class="subtitle">
-          Studio Artificial Intelligence e mi concentro soprattutto su computer vision,
-          deep learning, robotica e sistemi intelligenti applicati a dati visuali.
+          Sono una studentessa magistrale in Artificial Intelligence con una formazione in Informatica
+          e un interesse forte per computer vision, robotica e sistemi intelligenti applicati a dati visuali.
         </p>
       </section>
 
       <section class="content-card">
         <p>
-          Ho una formazione in Informatica e sto proseguendo con una magistrale in
-          <span class="highlight">Artificial Intelligence</span>. Nel tempo mi sono avvicinata
-          sempre di più ai progetti in cui l’AI entra in contatto con immagini, sensori,
-          ambienti reali e sistemi che devono prendere decisioni in modo robusto.
+          Mi interessa lavorare su progetti in cui l’intelligenza artificiale esce dalla parte puramente teorica
+          e viene integrata in sistemi reali: modelli che analizzano immagini, pipeline di percezione,
+          ambienti robotici, prototipi funzionanti e strumenti che devono essere valutati con attenzione.
         </p>
 
         <p>
-          Mi interessano in particolare la computer vision, il deep learning, il multimodal
-          learning e la robotica. Mi piace lavorare su pipeline complete: dalla gestione dei dati
-          alla sperimentazione, dalla valutazione dei modelli fino all’integrazione in sistemi
-          real-time o prototipi funzionanti.
+          Nel mio percorso ho lavorato su medical imaging, generazione di immagini sintetiche,
+          percezione per sistemi autonomi, teleoperazione robotica e ottimizzazione computazionale.
+          Mi piace seguire tutto il processo: capire il problema, preparare i dati, costruire il modello,
+          testarlo, interpretare gli errori e migliorarlo in modo concreto.
         </p>
 
         <p>
-          Ho lavorato su progetti legati a medical imaging, percezione per sistemi autonomi,
-          teleoperazione robotica e ottimizzazione computazionale. Cerco di mantenere un approccio
-          pratico ma rigoroso: test riproducibili, analisi degli errori, confronto tra modelli e
-          attenzione alla qualità dei dati.
+          Cerco di mantenere un approccio pratico ma rigoroso. Per me un progetto non è solo “far girare un modello”:
+          conta come viene costruito il dataset, come viene misurata la performance, quali errori emergono
+          e quanto il sistema resta affidabile fuori dalle condizioni ideali.
         </p>
 
-        <div class="grid">
-          <div class="mini-card">
-            <h3>Computer Vision</h3>
-            <p>
-              Detection, image processing, stereo vision, medical imaging e analisi di dati visuali.
-            </p>
-          </div>
+        <div class="buttons">
+          <a href="projects.html" class="btn btn-primary">
+            Vai ai progetti
+          </a>
 
-          <div class="mini-card">
-            <h3>Robotics & Perception</h3>
-            <p>
-              ROS2, sistemi real-time, sensor fusion e interazione tra percezione e controllo.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Applied AI</h3>
-            <p>
-              Machine learning, deep learning, modelli multimodali e valutazione sperimentale.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Research mindset</h3>
-            <p>
-              Benchmarking, ablation studies, failure analysis e sviluppo data-centric.
-            </p>
-          </div>
-        </div>
-
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">C++</span>
-          <span class="tag">PyTorch</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">YOLO</span>
-          <span class="tag">ROS2</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Linux</span>
+          <a href="index.html" class="btn btn-secondary">
+            Torna alla home
+          </a>
         </div>
       </section>
     </div>
@@ -336,73 +329,45 @@
     <div class="lang-en">
       <section class="page-header">
         <p class="eyebrow">About</p>
-        <h1>Background and interests</h1>
+        <h1>
+          Background <br>
+          <span class="accent">and interests</span>
+        </h1>
+
         <p class="subtitle">
-          I study Artificial Intelligence, with a strong interest in computer vision,
-          deep learning, robotics and intelligent systems applied to visual data.
+          I am an Artificial Intelligence MSc student with a Computer Science background and a strong
+          interest in computer vision, robotics and intelligent systems for visual data.
         </p>
       </section>
 
       <section class="content-card">
         <p>
-          I have a background in Computer Science and I am currently pursuing an MSc in
-          <span class="highlight">Artificial Intelligence</span>. Over time, I have become especially
-          interested in projects where AI interacts with images, sensors, real environments and
-          systems that need to make robust decisions.
+          I am interested in projects where artificial intelligence moves beyond pure theory and becomes
+          part of real systems: models that analyse images, perception pipelines, robotic environments,
+          working prototypes and tools that need careful evaluation.
         </p>
 
         <p>
-          My main interests include computer vision, deep learning, multimodal learning and robotics.
-          I enjoy working on complete pipelines: from data handling and experimentation to model
-          evaluation and integration into real-time systems or working prototypes.
+          My work includes medical imaging, synthetic image generation, perception for autonomous systems,
+          robotic teleoperation and computational optimisation. I like following the full process:
+          understanding the problem, preparing the data, building the model, testing it, reading the errors
+          and improving the system in a concrete way.
         </p>
 
         <p>
-          I have worked on projects involving medical imaging, perception for autonomous systems,
-          robotic teleoperation and computational optimisation. I try to keep a practical but rigorous
-          approach, with reproducible experiments, error analysis, model comparison and attention to
-          data quality.
+          I try to keep a practical but rigorous approach. A project is not just about making a model run:
+          the dataset, the evaluation strategy, the failure cases and the system’s behaviour outside ideal
+          conditions matter just as much.
         </p>
 
-        <div class="grid">
-          <div class="mini-card">
-            <h3>Computer Vision</h3>
-            <p>
-              Detection, image processing, stereo vision, medical imaging and visual data analysis.
-            </p>
-          </div>
+        <div class="buttons">
+          <a href="projects.html" class="btn btn-primary">
+            View projects
+          </a>
 
-          <div class="mini-card">
-            <h3>Robotics & Perception</h3>
-            <p>
-              ROS2, real-time systems, sensor fusion and the connection between perception and control.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Applied AI</h3>
-            <p>
-              Machine learning, deep learning, multimodal models and experimental evaluation.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Research mindset</h3>
-            <p>
-              Benchmarking, ablation studies, failure analysis and data-centric development.
-            </p>
-          </div>
-        </div>
-
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">C++</span>
-          <span class="tag">PyTorch</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">YOLO</span>
-          <span class="tag">ROS2</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Linux</span>
+          <a href="index.html" class="btn btn-secondary">
+            Back home
+          </a>
         </div>
       </section>
     </div>
