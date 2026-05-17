@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,373 +7,129 @@
   <title>About | Martina Kenna</title>
 
   <link rel="stylesheet" href="css/style.css" />
-
-  <style>
-    :root {
-      --bg: #0f0f10;
-      --card: #17181c;
-      --text: #f3f3f3;
-      --muted: #a1a1aa;
-      --accent: #9b59b6;
-      --accent-dark: #7f3fa3;
-      --border: rgba(255, 255, 255, 0.08);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 32rem),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    nav {
-      width: 100%;
-      padding: 1.5rem 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    #language-btn {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      z-index: 1001;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.45rem 0.6rem;
-      cursor: pointer;
-    }
-
-    #language-btn img {
-      width: 24px;
-      height: 16px;
-      display: block;
-    }
-
-    main {
-      width: min(950px, 92%);
-      margin: 0 auto;
-      padding: 5rem 0 4rem;
-    }
-
-    .page-header {
-      margin-bottom: 2rem;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      font-size: 0.78rem;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.7rem, 7vw, 5.4rem);
-      line-height: 0.95;
-    }
-
-    .accent {
-      color: var(--accent);
-    }
-
-    .subtitle {
-      max-width: 760px;
-      margin-top: 1.4rem;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
-    .content-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 2rem;
-      margin-top: 1.4rem;
-      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.25);
-    }
-
-    .content-card p {
-      color: var(--muted);
-      margin: 0 0 1.2rem;
-      font-size: 1.02rem;
-    }
-
-    .content-card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .highlight {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.4rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 150px;
-      text-decoration: none;
-      padding: 0.9rem 1.35rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      transition: 0.22s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      color: white;
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: rgba(155, 89, 182, 0.5);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .lang-en {
-      display: none;
-    }
-
-    @media (max-width: 760px) {
-      nav {
-        padding: 1.3rem 5%;
-      }
-
-      .nav-links {
-        gap: 1rem;
-      }
-
-      main {
-        padding-top: 4rem;
-      }
-
-      .content-card {
-        padding: 1.4rem;
-      }
-
-      .buttons {
-        justify-content: flex-start;
-      }
-    }
-  </style>
-
   <script>
-    function changeLanguage(lang) {
-      localStorage.setItem("lang", lang);
-      applyLanguage();
+  function applyLanguage() {
+    const lang = localStorage.getItem("lang") || "en";
+    document.body.classList.remove("lang-en", "lang-it");
+    document.body.classList.add("lang-" + lang);
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-en][data-it]").forEach((el) => {
+      el.textContent = lang === "it" ? el.dataset.it : el.dataset.en;
+    });
+
+    const button = document.querySelector(".language-btn");
+    if (button) {
+      button.textContent = lang === "it" ? "EN" : "IT";
     }
+  }
 
-    function applyLanguage() {
-      const lang = localStorage.getItem("lang") || "it";
+  function toggleLanguage() {
+    const current = localStorage.getItem("lang") || "en";
+    localStorage.setItem("lang", current === "en" ? "it" : "en");
+    applyLanguage();
+  }
 
-      document.querySelectorAll(".lang-it").forEach(el => {
-        el.style.display = lang === "it" ? "block" : "none";
-      });
-
-      document.querySelectorAll(".lang-en").forEach(el => {
-        el.style.display = lang === "en" ? "block" : "none";
-      });
-
-      const flag = document.querySelector("#language-btn img");
-      if (flag) {
-        flag.src = lang === "it"
-          ? "https://flagcdn.com/w40/it.png"
-          : "https://flagcdn.com/w40/gb.png";
-      }
-
-      const navAbout = document.querySelector('a[href="about.html"]');
-      const navProjects = document.querySelector('a[href="projects.html"]');
-
-      if (navAbout) navAbout.textContent = lang === "it" ? "Chi sono" : "About";
-      if (navProjects) navProjects.textContent = lang === "it" ? "Progetti" : "Projects";
-    }
-
-    window.addEventListener("load", applyLanguage);
-  </script>
+  window.addEventListener("DOMContentLoaded", applyLanguage);
+</script>
 </head>
 
 <body>
-  <nav>
-    <div class="logo">Martina Kenna</div>
+  <button class="language-btn" onclick="toggleLanguage()" aria-label="Change language">IT</button>
+
+  <nav class="site-nav">
+    <a class="logo" href="index.html">Martina Kenna</a>
 
     <div class="nav-links">
-      <a href="about.html">Chi sono</a>
-      <a href="projects.html">Progetti</a>
+      <a href="about.html" class="active" data-en="About" data-it="About">About</a>
+      <a href="projects.html" class="" data-en="Projects" data-it="Projects">Projects</a>
     </div>
   </nav>
 
-  <button
-    id="language-btn"
-    onclick="changeLanguage(localStorage.getItem('lang') === 'it' ? 'en' : 'it')"
-    aria-label="Cambia lingua"
-  >
-    <img src="https://flagcdn.com/w40/it.png" alt="Language flag">
-  </button>
-
-  <main>
-    <div class="lang-it">
-      <section class="page-header">
-        <p class="eyebrow">About</p>
-        <h1>
-          Percorso <br>
-          <span class="accent">e interessi</span>
-        </h1>
-
-        <p class="subtitle">
-          Sono una studentessa magistrale in Artificial Intelligence con una formazione in Informatica
-          e un interesse forte per computer vision, robotica e sistemi intelligenti applicati a dati visuali.
-        </p>
-      </section>
-
-      <section class="content-card">
-        <p>
-          Mi interessa lavorare su progetti in cui l’intelligenza artificiale esce dalla parte puramente teorica
-          e viene integrata in sistemi reali: modelli che analizzano immagini, pipeline di percezione,
-          ambienti robotici, prototipi funzionanti e strumenti che devono essere valutati con attenzione.
-        </p>
-
-        <p>
-          Nel mio percorso ho lavorato su medical imaging, generazione di immagini sintetiche,
-          percezione per sistemi autonomi, teleoperazione robotica e ottimizzazione computazionale.
-          Mi piace seguire tutto il processo: capire il problema, preparare i dati, costruire il modello,
-          testarlo, interpretare gli errori e migliorarlo in modo concreto.
-        </p>
-
-        <p>
-          Cerco di mantenere un approccio pratico ma rigoroso. Per me un progetto non è solo “far girare un modello”:
-          conta come viene costruito il dataset, come viene misurata la performance, quali errori emergono
-          e quanto il sistema resta affidabile fuori dalle condizioni ideali.
-        </p>
-
-        <div class="buttons">
-          <a href="projects.html" class="btn btn-primary">
-            Vai ai progetti
-          </a>
-
-          <a href="index.html" class="btn btn-secondary">
-            Torna alla home
-          </a>
-        </div>
-      </section>
-    </div>
-
+  <main class="page">
     <div class="lang-en">
       <section class="page-header">
         <p class="eyebrow">About</p>
         <h1>
           Background <br>
-          <span class="accent">and interests</span>
+          <span class="accent">and direction</span>
         </h1>
 
         <p class="subtitle">
-          I am an Artificial Intelligence MSc student with a Computer Science background and a strong
-          interest in computer vision, robotics and intelligent systems for visual data.
+          I come from a Computer Science background and I am now specialising in Artificial Intelligence.
+          My work connects technical development, applied research and a practical interest in how AI systems behave in real contexts.
         </p>
       </section>
 
-      <section class="content-card">
+      <section class="card">
         <p>
-          I am interested in projects where artificial intelligence moves beyond pure theory and becomes
-          part of real systems: models that analyse images, perception pipelines, robotic environments,
-          working prototypes and tools that need careful evaluation.
+          I started from Computer Science because I wanted to understand how software systems are built.
+          During my studies, I became increasingly interested in artificial intelligence, especially in the parts
+          that involve learning from data, evaluating models and turning experiments into working systems.
         </p>
 
         <p>
-          My work includes medical imaging, synthetic image generation, perception for autonomous systems,
-          robotic teleoperation and computational optimisation. I like following the full process:
-          understanding the problem, preparing the data, building the model, testing it, reading the errors
-          and improving the system in a concrete way.
+          My academic and project experience includes machine learning, optimisation, computer vision, medical imaging,
+          robotics and data-centric experimentation. I like working across the full process: understanding the problem,
+          preparing the data, building the pipeline, evaluating the results and improving the system step by step.
         </p>
 
         <p>
-          I try to keep a practical but rigorous approach. A project is not just about making a model run:
-          the dataset, the evaluation strategy, the failure cases and the system’s behaviour outside ideal
-          conditions matter just as much.
+          I try to keep a practical but rigorous approach. For me, a good technical project is not just about obtaining
+          a result once. It is about understanding why that result happens, where the system fails and what can be done
+          to make it more robust.
         </p>
 
         <div class="buttons">
-          <a href="projects.html" class="btn btn-primary">
-            View projects
-          </a>
+          <a href="projects.html" class="btn btn-primary">View projects</a>
+          <a href="index.html" class="btn btn-secondary">Back home</a>
+        </div>
+      </section>
+    </div>
 
-          <a href="index.html" class="btn btn-secondary">
-            Back home
-          </a>
+    <div class="lang-it">
+      <section class="page-header">
+        <p class="eyebrow">About</p>
+        <h1>
+          Percorso <br>
+          <span class="accent">e direzione</span>
+        </h1>
+
+        <p class="subtitle">
+          Ho una formazione in Informatica e sto proseguendo il mio percorso specializzandomi in Artificial Intelligence.
+          Il mio lavoro unisce sviluppo tecnico, ricerca applicata e interesse pratico per il comportamento dei sistemi AI in contesti reali.
+        </p>
+      </section>
+
+      <section class="card">
+        <p>
+          Sono partita dall'Informatica perché volevo capire come si progettano e si costruiscono i sistemi software.
+          Durante il percorso universitario mi sono avvicinata sempre di più all'intelligenza artificiale,
+          in particolare agli aspetti legati all'apprendimento dai dati, alla valutazione dei modelli
+          e alla trasformazione degli esperimenti in sistemi funzionanti.
+        </p>
+
+        <p>
+          Le mie esperienze accademiche e progettuali includono machine learning, ottimizzazione, computer vision,
+          medical imaging, robotica e sperimentazione data-centric. Mi piace seguire l'intero processo:
+          capire il problema, preparare i dati, costruire la pipeline, valutare i risultati e migliorare il sistema passo dopo passo.
+        </p>
+
+        <p>
+          Cerco di mantenere un approccio pratico ma rigoroso. Per me un buon progetto tecnico non significa solo ottenere
+          un risultato una volta, ma capire perché quel risultato si verifica, dove il sistema fallisce e cosa si può fare
+          per renderlo più robusto.
+        </p>
+
+        <div class="buttons">
+          <a href="projects.html" class="btn btn-primary">Vai ai progetti</a>
+          <a href="index.html" class="btn btn-secondary">Torna alla home</a>
         </div>
       </section>
     </div>
   </main>
 
-  <footer>
+  <footer class="footer">
     <p>&copy; 2026 Martina Kenna | <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
   </footer>
 </body>
