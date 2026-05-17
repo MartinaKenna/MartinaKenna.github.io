@@ -1,68 +1,36 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <title>Martina Kenna</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Projects | Martina Kenna</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+
   <style>
-    #language-btn {
-      position: fixed;
-      top: 1.2rem;
-      left: 1.2rem;
-      z-index: 1001;
-      background: none;
-      border: none;
-      color: #f0f0f0;
-      cursor: pointer;
+    :root {
+      --bg: #0f0f10;
+      --card: #17181c;
+      --text: #f3f3f3;
+      --muted: #a1a1aa;
+      --accent: #9b59b6;
+      --border: rgba(255, 255, 255, 0.08);
     }
 
-    #language-btn img {
-      width: 24px;
-      height: 16px;
+    * {
+      box-sizing: border-box;
     }
 
-    .project-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #222;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .project-icon {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .project-content {
-      text-align: center;
-      flex: 1;
-    }
-
-    .project-card h3 {
-      margin: 0 0 10px;
-      text-align: center;
-    }
-
-    .project-card a {
-      color: #ffd700;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    .project-card a:hover {
-      text-decoration: underline;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(155, 89, 182, 0.14), transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     nav {
@@ -70,209 +38,348 @@
       top: 0;
       right: 1rem;
       z-index: 1000;
-      background: transparent;
       display: flex;
       gap: 1rem;
-    }
-  </style>
-  <script>
-    function changeLanguage(lang) {
-      localStorage.setItem('lang', lang);
-      applyLanguage();
+      padding: 1rem 0;
     }
 
-    function applyLanguage() {
-      const lang = localStorage.getItem('lang') || 'it';
-      const flag = document.querySelector('#language-btn img');
-      if (flag) {
-        flag.src = lang === 'it' ? 'https://flagcdn.com/w40/it.png' : 'https://flagcdn.com/w40/gb.png';
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    main {
+      width: min(1050px, 92%);
+      margin: 0 auto;
+      padding: 7rem 0 4rem;
+    }
+
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      margin-bottom: 0.7rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin-top: 1.2rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .projects {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.2rem;
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(155, 89, 182, 0.38);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 135px;
+      border-radius: 18px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+    }
+
+    .project-image.logo {
+      object-fit: contain;
+      padding: 1.4rem;
+      background: white;
+    }
+
+    .project-content h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .project-meta {
+      margin-top: 0.35rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .project-content p {
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #d6d6d6;
+      font-size: 0.82rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        right: 0.8rem;
+        gap: 0.75rem;
       }
 
-      const it = document.querySelectorAll('.lang-it');
-      const en = document.querySelectorAll('.lang-en');
+      main {
+        padding-top: 6rem;
+      }
 
-      it.forEach(e => e.style.display = (lang === 'it') ? 'block' : 'none');
-      en.forEach(e => e.style.display = (lang === 'en') ? 'block' : 'none');
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        height: 190px;
+      }
     }
-
-    window.onload = applyLanguage;
-  </script>
+  </style>
 </head>
+
 <body>
   <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">Chi sono</a>
-    <a href="projects.html">Progetti</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
   </nav>
 
-  <div id="language-btn" onclick="changeLanguage(localStorage.getItem('lang') === 'it' ? 'en' : 'it')">
-    <img src="https://flagcdn.com/w40/it.png" alt="Flag">
-  </div>
-
   <main>
-    <!-- Versione Italiana -->
-    <div class="lang-it">
-      <h1>Progetti principali</h1>
+    <section class="page-header">
+      <p class="eyebrow">Selected work</p>
+      <h1>Projects</h1>
+      <p class="subtitle">
+        A selection of research, applied AI and robotics projects focused on computer vision,
+        perception and model evaluation.
+      </p>
+    </section>
 
-      <div class="project-card">
-        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-icon">
+    <section class="projects">
+
+      <article class="project-card">
+        <img
+          src="images/datalogic_logo.png"
+          alt="Datalogic logo"
+          class="project-image logo"
+        >
+
         <div class="project-content">
-          <h3>UniBo Motorsport Driverless – Perception</h3>
-          <p>Parte del team Perception della divisione Driverless di UniBo Motorsport, con focus su visione artificiale, YOLO, OpenVINO e triangolazione stereo per il riconoscimento ambientale in tempo reale.</p>
-        </div>
-      </div>
+          <h2>Computer Vision Research Internship</h2>
+          <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
 
-      <div class="project-card">
-        <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
+          <p>
+            Applied research on deep learning for real-world visual understanding and industrial
+            perception. The work focuses on benchmarking, representation learning, failure analysis
+            and optimisation for embedded deployment.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Benchmarking</span>
+            <span class="tag">Model Evaluation</span>
+            <span class="tag">Embedded AI</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="images/motorsport.png"
+          alt="UniBo Motorsport project"
+          class="project-image"
+        >
+
         <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/TablutArtificialPlayers">Tablut AI</a></h3>
-          <p>Client artificiale per il gioco Tablut, con strategie Minimax ed euristiche personalizzate per decision making efficiente.</p>
-        </div>
-      </div>
+          <h2>Perception for Autonomous Driving</h2>
+          <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
 
-      <div class="project-card">
-        <img src="images/python.jpg" alt="Python" class="project-icon">
+          <p>
+            Real-time perception work for an autonomous driving system. The project involved object
+            detection, stereo vision and ROS2 pipelines under strict latency constraints.
+          </p>
+
+          <div class="tags">
+            <span class="tag">YOLO</span>
+            <span class="tag">ROS2</span>
+            <span class="tag">Stereo Vision</span>
+            <span class="tag">Sensor Fusion</span>
+            <span class="tag">Real-time Perception</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="images/medical_xray.jpg"
+          alt="Synthetic chest X-ray project"
+          class="project-image"
+        >
+
         <div class="project-content">
-          <h3>Stage – Estensione libreria Python “softpy”</h3>
-          <p>Sviluppo di estensioni per la libreria Python “softpy”, focalizzandomi su sistemi basati sulla logica fuzzy e algoritmi genetici, migliorando le capacità di calcolo e ottimizzazione della libreria.</p>
-        </div>
-      </div>
+          <h2>Synthetic Chest X-ray Generation</h2>
+          <p class="project-meta">Big Data Analytics and Text Mining · 2026</p>
 
-      <div class="project-card">
-        <img src="images/socialmesh.jpg" alt="SocialMesh demo" class="project-icon">
+          <p>
+            Multimodal medical imaging pipeline for text-conditioned chest X-ray generation with
+            diffusion models. The project focuses on clinical consistency, anatomical plausibility
+            and robust evaluation of generated images.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Medical Imaging</span>
+            <span class="tag">Diffusion Models</span>
+            <span class="tag">MIMIC-CXR</span>
+            <span class="tag">Multimodal AI</span>
+            <span class="tag">Evaluation</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="images/rviz.png"
+          alt="Robotic arm teleoperation in RViz"
+          class="project-image"
+        >
+
         <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/SocialMesh">SocialMesh</a></h3>
-          <p>App Android per eventi e social matching: geolocalizzazione, filtro utenti, visualizzazione su mappa (API Ticketmaster e Google Maps).</p>
-        </div>
-      </div>
+          <h2>Robotic Arm Teleoperation</h2>
+          <p class="project-meta">Personal Project · 2026</p>
 
-      <div class="project-card">
+          <p>
+            Real-time teleoperation system using hand tracking, ROS2 and RViz. Hand gestures are
+            mapped to robotic end-effector movements and gripper actions with smoothing for stable
+            visual control.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Robotics</span>
+            <span class="tag">MediaPipe</span>
+            <span class="tag">ROS2</span>
+            <span class="tag">RViz</span>
+            <span class="tag">Teleoperation</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="images/imitation_learning.png"
+          alt="Robotic manipulation project"
+          class="project-image"
+        >
+
         <div class="project-content">
-          <h3>Comparazione App E-commerce</h3>
-          <p>Analisi UX/UI e test di usabilità comparativi su Vinted, eBay e Wallapop, con valutazione statistica dei risultati.</p>
-        </div>
-      </div>
+          <h2>Robotic Manipulation via Imitation Learning</h2>
+          <p class="project-meta">Personal Project · 2025</p>
 
-      <div class="project-card">
+          <p>
+            Behaviour cloning and DAgger pipelines for robotic manipulation in simulation.
+            The project compares imitation learning methods with reinforcement learning baselines
+            on unseen object configurations.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Imitation Learning</span>
+            <span class="tag">PyBullet</span>
+            <span class="tag">DAgger</span>
+            <span class="tag">PPO</span>
+            <span class="tag">Robotic Manipulation</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img
+          src="images/computer_vision.png"
+          alt="Computer vision project"
+          class="project-image"
+        >
+
         <div class="project-content">
-          <h3>Parser JSON</h3>
-          <p>Parser sviluppato in Prolog e Common Lisp per la lettura di strutture JSON complesse.</p>
-        </div>
-      </div>
+          <h2>Image Processing and Computer Vision</h2>
+          <p class="project-meta">University of Bologna · 2025</p>
 
-      <!-- Nuovi progetti senza immagini -->
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Image Processing & Computer Vision – Esame IPCV</h3>
-          <p>Progetti multiapproccio (classico e deep learning): pipeline classica per rilevamento libri su scaffale e classificazione animali con ResNet-18 / CNN custom, studio di ablation con PyTorch.</p>
-        </div>
-      </div>
+          <p>
+            Course project focused on CNN design, model comparison and ablation studies.
+            The work explored accuracy, regularisation and parameter efficiency across different
+            architectures.
+          </p>
 
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Sports Tournament Scheduling Optimization</h3>
-          <p>Studio e confronto di quattro approcci – CP, SAT, SMT, MIP – per la schedulazione di tornei, minimizzando squilibri casa/trasferta e garantendo distribuzione equa delle partite.</p>
+          <div class="tags">
+            <span class="tag">CNN</span>
+            <span class="tag">Image Processing</span>
+            <span class="tag">Ablation Studies</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Model Design</span>
+          </div>
         </div>
-      </div>
+      </article>
 
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Image Deswirling con Deep Learning</h3>
-          <p>Modelli deep learning per correggere distorsioni swirl con parametri variabili (centro, raggio, intensità). Pipeline end-to-end di restauro visivo con architetture personalizzate in TensorFlow.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>R&D Intern – Datalogic USA, DLLABS (Eugene, Oregon)</h3>
-          <p>Tirocinio di ricerca e sviluppo presso Datalogic Labs, partecipando ad attività di innovazione e sviluppo software per progetti nei campi dell’automazione e dell’intelligenza artificiale.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Versione Inglese -->
-    <div class="lang-en" style="display:none">
-      <h1>Main Projects</h1>
-
-      <div class="project-card">
-        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-icon">
-        <div class="project-content">
-          <h3>UniBo Motorsport Driverless – Perception</h3>
-          <p>Member of the Perception team within UniBo Motorsport’s Driverless division, focusing on computer vision, YOLO, OpenVINO, and stereo triangulation for real-time environment recognition.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="images/tablut.jpg" alt="Tablut AI" class="project-icon">
-        <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/TablutArtificialPlayers">Tablut AI</a></h3>
-          <p>Artificial intelligence client for the Tablut board game, using Minimax strategies and custom heuristics for efficient decision making.</p>
-        </div>
-      </div>
-
-      <div class in="project-card">
-        <img src="images/python.jpg" alt="Python" class="project-icon">
-        <div class="project-content">
-          <h3>Internship – Python Library Extension “softpy”</h3>
-          <p>Developed extensions for the Python library “softpy”, focusing on fuzzy logic systems and genetic algorithms, enhancing computational and optimization capabilities.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img src="images/socialmesh.jpg" alt="SocialMesh demo" class="project-icon">
-        <div class="project-content">
-          <h3><a href="https://github.com/MartinaKenna/SocialMesh">SocialMesh</a></h3>
-          <p>Android app for event-based social matching: geolocation, user filtering, map view (Ticketmaster & Google Maps APIs).</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>E-commerce App Comparison</h3>
-          <p>UX/UI analysis and usability testing on Vinted, eBay, and Wallapop, with statistical evaluation.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>JSON Parser</h3>
-          <p>Custom parser in Prolog and Common Lisp to handle complex JSON structures.</p>
-        </div>
-      </div>
-
-      <!-- New projects no images -->
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Image Processing & Computer Vision – IPCV Exam</h3>
-          <p>Multi-approach projects (classical & deep learning): classic pipeline for detecting books on a shelf and animal classification using ResNet-18 / custom CNN, with ablation study in PyTorch.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Sports Tournament Scheduling Optimization</h3>
-          <p>Studied and compared four approaches — CP, SAT, SMT, MIP — for tournament scheduling, minimizing home/away imbalances and ensuring fair distribution of matches.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>Image Deswirling with Deep Learning</h3>
-          <p>Built deep learning models to correct swirl distortions in images with variable parameters (center, radius, intensity). Created end-to-end restoration pipeline with custom neural architectures in TensorFlow.</p>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-content">
-          <h3>R&D Intern – Datalogic USA, DLLABS (Eugene, Oregon)</h3>
-          <p>Research & development internship at Datalogic Labs, contributing to innovation and software development efforts in automation and AI projects.</p>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Martina Kenna | <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
+    <p>&copy; 2026 Martina Kenna | <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
   </footer>
 </body>
 </html>
