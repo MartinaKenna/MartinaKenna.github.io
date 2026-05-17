@@ -1,152 +1,257 @@
-<section class="projects">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <article class="project-card">
-    <img
-      src="images/datalogic_logo.png"
-      alt="Datalogic"
-      class="project-image logo"
-    >
+  <title>Projects | Martina Kenna</title>
 
-    <div class="project-content">
-      <h2>Computer Vision Research Internship</h2>
-      <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+  function applyLanguage() {
+    const lang = localStorage.getItem("lang") || "en";
+    document.body.classList.remove("lang-en", "lang-it");
+    document.body.classList.add("lang-" + lang);
+    document.documentElement.lang = lang;
 
-      <p>
-        Applied research on deep learning for industrial perception and visual understanding,
-        focused on benchmarking, representation learning, robustness and embedded deployment.
-      </p>
+    document.querySelectorAll("[data-en][data-it]").forEach((el) => {
+      el.textContent = lang === "it" ? el.dataset.it : el.dataset.en;
+    });
 
-      <div class="tags">
-        <span class="tag">Computer Vision</span>
-        <span class="tag">Deep Learning</span>
-        <span class="tag">Benchmarking</span>
-        <span class="tag">Embedded AI</span>
-      </div>
+    const button = document.querySelector(".language-btn");
+    if (button) {
+      button.textContent = lang === "it" ? "EN" : "IT";
+    }
+  }
+
+  function toggleLanguage() {
+    const current = localStorage.getItem("lang") || "en";
+    localStorage.setItem("lang", current === "en" ? "it" : "en");
+    applyLanguage();
+  }
+
+  window.addEventListener("DOMContentLoaded", applyLanguage);
+</script>
+</head>
+
+<body>
+  <button class="language-btn" onclick="toggleLanguage()" aria-label="Change language">IT</button>
+
+  <nav class="site-nav">
+    <a class="logo" href="index.html">Martina Kenna</a>
+
+    <div class="nav-links">
+      <a href="about.html" class="" data-en="About" data-it="About">About</a>
+      <a href="projects.html" class="active" data-en="Projects" data-it="Projects">Projects</a>
     </div>
-  </article>
+  </nav>
 
-  <article class="project-card">
-    <img
-      src="images/unibo_motorsport.png"
-      alt="UniBo Motorsport"
-      class="project-image"
-    >
+  <main class="page">
+    <div class="lang-en">
+      <section class="page-header">
+        <p class="eyebrow">Selected work</p>
+        <h1>
+          Projects <br>
+          <span class="accent">and research</span>
+        </h1>
 
-    <div class="project-content">
-      <h2>Perception for Autonomous Driving</h2>
-      <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
-
-      <p>
-        Real-time perception pipelines for autonomous driving systems using stereo vision,
-        ROS2 and object detection under strict latency constraints.
-      </p>
-
-      <div class="tags">
-        <span class="tag">YOLO</span>
-        <span class="tag">ROS2</span>
-        <span class="tag">Stereo Vision</span>
-        <span class="tag">Sensor Fusion</span>
-      </div>
+        <p class="subtitle">
+          A selection of university, research and personal projects across applied AI,
+          software development, computer vision and robotics.
+        </p>
+      </section>
     </div>
-  </article>
 
-  <article class="project-card">
-    <img
-      src="images/medical_xray.jpg"
-      alt="Synthetic chest X-ray generation"
-      class="project-image"
-    >
+    <div class="lang-it">
+      <section class="page-header">
+        <p class="eyebrow">Selected work</p>
+        <h1>
+          Progetti <br>
+          <span class="accent">e ricerca</span>
+        </h1>
 
-    <div class="project-content">
-      <h2>Synthetic Chest X-ray Generation</h2>
-      <p class="project-meta">University Project · 2026</p>
-
-      <p>
-        Multimodal medical imaging pipeline for text-conditioned chest X-ray generation
-        with diffusion models and clinically-oriented evaluation.
-      </p>
-
-      <div class="tags">
-        <span class="tag">Medical Imaging</span>
-        <span class="tag">Diffusion Models</span>
-        <span class="tag">Multimodal AI</span>
-        <span class="tag">Evaluation</span>
-      </div>
+        <p class="subtitle">
+          Una selezione di progetti universitari, di ricerca e personali legati ad AI applicata,
+          sviluppo software, computer vision e robotica.
+        </p>
+      </section>
     </div>
-  </article>
 
-  <article class="project-card">
-    <img
-      src="images/rviz.png"
-      alt="ROS2 Teleoperation"
-      class="project-image"
-    >
+    <section class="projects">
 
-    <div class="project-content">
-      <h2>Robotic Arm Teleoperation</h2>
-      <p class="project-meta">Personal Project · 2026</p>
+      <article class="project-card">
+        <img src="images/datalogic_logo.png" alt="Datalogic" class="project-image logo-image" />
 
-      <p>
-        Real-time robotic teleoperation system using hand tracking, ROS2 and RViz
-        with gesture-based robotic arm and gripper control.
-      </p>
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Computer Vision Research Internship</h2>
+            <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
+            <p>
+              Applied research on deep learning for industrial perception and visual understanding.
+              The work involved benchmarking, model evaluation, robustness analysis and optimisation for embedded deployment.
+            </p>
+          </div>
 
-      <div class="tags">
-        <span class="tag">Robotics</span>
-        <span class="tag">ROS2</span>
-        <span class="tag">MediaPipe</span>
-        <span class="tag">RViz</span>
-      </div>
-    </div>
-  </article>
+          <div class="lang-it">
+            <h2>Computer Vision Research Internship</h2>
+            <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
+            <p>
+              Ricerca applicata su deep learning per percezione industriale e visual understanding.
+              Il lavoro ha incluso benchmarking, valutazione dei modelli, analisi della robustezza e ottimizzazione per deployment embedded.
+            </p>
+          </div>
+        </div>
+      </article>
 
-  <article class="project-card">
-    <img
-      src="images/tablut.jpg"
-      alt="Tablut AI"
-      class="project-image"
-    >
+      <article class="project-card">
+        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-image" />
 
-    <div class="project-content">
-      <h2>Tablut AI Agent</h2>
-      <p class="project-meta">Artificial Intelligence Project · 2024</p>
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Perception for Autonomous Driving</h2>
+            <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
+            <p>
+              Real-time perception work for an autonomous driving system using ROS2, stereo vision and object detection
+              under strict latency constraints.
+            </p>
+          </div>
 
-      <p>
-        Autonomous game-playing agent for Tablut using search strategies,
-        heuristics and adversarial decision-making techniques.
-      </p>
+          <div class="lang-it">
+            <h2>Perception for Autonomous Driving</h2>
+            <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
+            <p>
+              Lavoro sulla percezione real-time per un sistema di guida autonoma, con ROS2,
+              stereo vision e object detection sotto vincoli di latenza stringenti.
+            </p>
+          </div>
+        </div>
+      </article>
 
-      <div class="tags">
-        <span class="tag">Game AI</span>
-        <span class="tag">Minimax</span>
-        <span class="tag">Heuristics</span>
-        <span class="tag">Search Algorithms</span>
-      </div>
-    </div>
-  </article>
+      <article class="project-card">
+        <img src="images/medical_xray.jpg" alt="Synthetic chest X-ray generation" class="project-image" />
 
-  <article class="project-card">
-    <img
-      src="images/socialmesh.jpg"
-      alt="SocialMesh"
-      class="project-image"
-    >
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Synthetic Chest X-ray Generation</h2>
+            <p class="project-meta">University Project · 2026</p>
+            <p>
+              Multimodal medical imaging pipeline for text-conditioned chest X-ray generation with diffusion models,
+              focused on evaluation, clinical consistency and anatomical plausibility.
+            </p>
+          </div>
 
-    <div class="project-content">
-      <h2>SocialMesh</h2>
-      <p class="project-meta">Distributed Systems Project</p>
+          <div class="lang-it">
+            <h2>Synthetic Chest X-ray Generation</h2>
+            <p class="project-meta">University Project · 2026</p>
+            <p>
+              Pipeline multimodale per generare radiografie toraciche condizionate da testo con diffusion models,
+              con focus su valutazione, coerenza clinica e plausibilità anatomica.
+            </p>
+          </div>
+        </div>
+      </article>
 
-      <p>
-        Experimental distributed social platform focused on decentralised communication
-        and peer-to-peer interaction models.
-      </p>
+      <article class="project-card">
+        <img src="images/rviz.png" alt="ROS2 teleoperation" class="project-image" />
 
-      <div class="tags">
-        <span class="tag">Distributed Systems</span>
-        <span class="tag">Networking</span>
-        <span class="tag">Backend</span>
-      </div>
-    </div>
-  </article>
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Robotic Arm Teleoperation</h2>
+            <p class="project-meta">Personal Project · 2026</p>
+            <p>
+              Real-time robotic teleoperation system using hand tracking, ROS2 and RViz,
+              with gesture-based control for robotic arms and grippers.
+            </p>
+          </div>
 
-</section>
+          <div class="lang-it">
+            <h2>Robotic Arm Teleoperation</h2>
+            <p class="project-meta">Personal Project · 2026</p>
+            <p>
+              Sistema di teleoperazione robotica real-time con hand tracking, ROS2 e RViz,
+              basato su gesture per il controllo di bracci robotici e gripper.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="images/tablut.jpg" alt="Tablut AI" class="project-image" />
+
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Tablut AI Agent</h2>
+            <p class="project-meta">Artificial Intelligence Project · 2024</p>
+            <p>
+              Autonomous game-playing agent for Tablut based on adversarial search,
+              heuristics and decision-making under time constraints.
+            </p>
+          </div>
+
+          <div class="lang-it">
+            <h2>Tablut AI Agent</h2>
+            <p class="project-meta">Artificial Intelligence Project · 2024</p>
+            <p>
+              Agente autonomo per il gioco Tablut basato su ricerca avversariale,
+              euristiche e decision-making con vincoli di tempo.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="images/socialmesh.jpg" alt="SocialMesh" class="project-image" />
+
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>SocialMesh</h2>
+            <p class="project-meta">Distributed Systems Project</p>
+            <p>
+              Experimental distributed social platform focused on decentralised communication
+              and peer-to-peer interaction models.
+            </p>
+          </div>
+
+          <div class="lang-it">
+            <h2>SocialMesh</h2>
+            <p class="project-meta">Distributed Systems Project</p>
+            <p>
+              Piattaforma social distribuita sperimentale, progettata intorno a comunicazione decentralizzata
+              e modelli di interazione peer-to-peer.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="images/python.jpg" alt="Computational Intelligence" class="project-image" />
+
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Computational Intelligence</h2>
+            <p class="project-meta">Research Internship · 2024</p>
+            <p>
+              Work on evolutionary algorithms and fuzzy optimisation systems,
+              including implementation, validation and extension of Python modules.
+            </p>
+          </div>
+
+          <div class="lang-it">
+            <h2>Computational Intelligence</h2>
+            <p class="project-meta">Research Internship · 2024</p>
+            <p>
+              Lavoro su algoritmi evolutivi e sistemi di ottimizzazione fuzzy,
+              con implementazione, validazione ed estensione di moduli Python.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Martina Kenna | <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
+  </footer>
+</body>
+</html>
