@@ -14,6 +14,7 @@
       --text: #f3f3f3;
       --muted: #a1a1aa;
       --accent: #9b59b6;
+      --accent-dark: #7f3fa3;
       --border: rgba(255,255,255,0.08);
     }
 
@@ -26,11 +27,8 @@
     body {
       font-family: Inter, Arial, sans-serif;
       background:
-        radial-gradient(circle at top left,
-          rgba(155, 89, 182, 0.15),
-          transparent 30rem),
+        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 30rem),
         var(--bg);
-
       color: var(--text);
       min-height: 100vh;
       line-height: 1.6;
@@ -70,11 +68,18 @@
       width: min(1150px, 92%);
       margin: 0 auto;
       min-height: calc(100vh - 90px);
-
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       align-items: center;
       gap: 4rem;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
     }
 
     .hero-left h1 {
@@ -83,64 +88,64 @@
       margin-bottom: 1.5rem;
     }
 
-    .hero-left p {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
-
     .accent {
       color: var(--accent);
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 2rem;
+    .description {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1rem;
     }
 
-    .tag {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      padding: 0.55rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      color: #d6d6d6;
+    .description strong {
+      color: var(--text);
+      font-weight: 500;
     }
 
     .buttons {
       display: flex;
       gap: 1rem;
-      margin-top: 2.5rem;
+      margin-top: 2.4rem;
       flex-wrap: wrap;
     }
 
     .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-width: 150px;
       text-decoration: none;
-      padding: 0.9rem 1.3rem;
+      padding: 0.9rem 1.35rem;
       border-radius: 999px;
       font-size: 0.95rem;
-      transition: 0.2s ease;
+      transition: 0.22s ease;
     }
 
     .btn-primary {
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: white;
+      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
     }
 
     .btn-primary:hover {
-      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
     }
 
     .btn-secondary {
       border: 1px solid var(--border);
       color: white;
-      background: transparent;
+      background: rgba(255,255,255,0.035);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+      border-color: rgba(155, 89, 182, 0.5);
+      background: rgba(255,255,255,0.06);
     }
 
     .hero-right {
@@ -150,17 +155,17 @@
 
     .profile-card {
       width: 100%;
-      max-width: 360px;
+      max-width: 365px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 28px;
+      border-radius: 30px;
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,0.35);
     }
 
     .profile-image {
       width: 100%;
-      height: 380px;
+      height: 390px;
       object-fit: cover;
       display: block;
     }
@@ -170,7 +175,7 @@
     }
 
     .profile-content h3 {
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
       font-size: 1.25rem;
     }
 
@@ -182,7 +187,8 @@
     .socials {
       display: flex;
       gap: 1rem;
-      margin-top: 1.4rem;
+      margin-top: 1.3rem;
+      flex-wrap: wrap;
     }
 
     .socials a {
@@ -197,7 +203,6 @@
     }
 
     @media (max-width: 900px) {
-
       .hero {
         grid-template-columns: 1fr;
         padding: 4rem 0;
@@ -211,12 +216,13 @@
         text-align: center;
       }
 
-      .hero-left p {
-        margin: 0 auto;
+      .description {
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .tags,
-      .buttons {
+      .buttons,
+      .socials {
         justify-content: center;
       }
 
@@ -235,7 +241,6 @@
     <div class="nav-links">
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
     </div>
   </nav>
 
@@ -243,35 +248,33 @@
 
     <div class="hero-left">
 
+      <p class="eyebrow">Artificial Intelligence · Computer Vision · Robotics</p>
+
       <h1>
         Applied AI <br>
-        <span class="accent">Computer Vision</span> <br>
-        & Robotics
+        <span class="accent">for visual</span> <br>
+        systems
       </h1>
 
-      <p>
-        MSc student in Artificial Intelligence focused on computer vision,
-        multimodal learning and autonomous systems.
-        Interested in building real-world AI systems that combine perception,
-        reasoning and interaction.
+      <p class="description">
+        I am an Artificial Intelligence MSc student with a background in Computer Science
+        and a strong interest in systems that connect <strong>visual perception</strong>,
+        <strong>machine learning</strong> and <strong>robotics</strong>.
       </p>
 
-      <div class="tags">
-        <div class="tag">Computer Vision</div>
-        <div class="tag">Deep Learning</div>
-        <div class="tag">ROS2</div>
-        <div class="tag">Medical Imaging</div>
-        <div class="tag">Multimodal AI</div>
-        <div class="tag">Robotics</div>
-      </div>
+      <p class="description">
+        My work is mainly focused on computer vision, deep learning and applied AI:
+        from medical image generation and model evaluation to real-time perception
+        pipelines for autonomous and robotic systems.
+      </p>
 
       <div class="buttons">
         <a href="projects.html" class="btn btn-primary">
-          View Projects
+          View projects
         </a>
 
-        <a href="Martina_Kenna_CV.pdf" class="btn btn-secondary">
-          Download CV
+        <a href="about.html" class="btn btn-secondary">
+          About me
         </a>
       </div>
 
@@ -282,7 +285,7 @@
       <div class="profile-card">
 
         <img
-          src="images/avatar.jpg"
+          src="images/avatar.png"
           alt="Martina Kenna"
           class="profile-image"
         >
