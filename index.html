@@ -1,324 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Martina Kenna</title>
 
-  <style>
-    :root {
-      --bg: #0f0f10;
-      --card: #17181c;
-      --text: #f3f3f3;
-      --muted: #a1a1aa;
-      --accent: #9b59b6;
-      --accent-dark: #7f3fa3;
-      --border: rgba(255,255,255,0.08);
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+  function applyLanguage() {
+    const lang = localStorage.getItem("lang") || "en";
+    document.body.classList.remove("lang-en", "lang-it");
+    document.body.classList.add("lang-" + lang);
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-en][data-it]").forEach((el) => {
+      el.textContent = lang === "it" ? el.dataset.it : el.dataset.en;
+    });
+
+    const button = document.querySelector(".language-btn");
+    if (button) {
+      button.textContent = lang === "it" ? "EN" : "IT";
     }
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  function toggleLanguage() {
+    const current = localStorage.getItem("lang") || "en";
+    localStorage.setItem("lang", current === "en" ? "it" : "en");
+    applyLanguage();
+  }
 
-    body {
-      font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 30rem),
-        var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    nav {
-      width: 100%;
-      padding: 1.5rem 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      transition: 0.2s ease;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .hero {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-      min-height: calc(100vh - 90px);
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      gap: 4rem;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      font-size: 0.78rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero-left h1 {
-      font-size: clamp(3rem, 8vw, 5.8rem);
-      line-height: 0.95;
-      margin-bottom: 1.5rem;
-    }
-
-    .accent {
-      color: var(--accent);
-    }
-
-    .description {
-      max-width: 690px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      margin-bottom: 1rem;
-    }
-
-    .description strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.4rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 150px;
-      text-decoration: none;
-      padding: 0.9rem 1.35rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      transition: 0.22s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--border);
-      color: white;
-      background: rgba(255,255,255,0.035);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: rgba(155, 89, 182, 0.5);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .hero-right {
-      display: flex;
-      justify-content: center;
-    }
-
-    .profile-card {
-      width: 100%;
-      max-width: 300px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-
-    .profile-image {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .profile-content {
-      padding: 1.3rem;
-    }
-
-    .profile-content h3 {
-      margin-bottom: 0.35rem;
-      font-size: 1.15rem;
-    }
-
-    .profile-content p {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .socials {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .socials a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: 0.2s ease;
-    }
-
-    .socials a:hover {
-      color: white;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 4rem 0;
-      }
-
-      .hero-right {
-        order: -1;
-      }
-
-      .hero-left {
-        text-align: center;
-      }
-
-      .description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .buttons,
-      .socials {
-        justify-content: center;
-      }
-
-      .nav-links {
-        gap: 1rem;
-      }
-    }
-  </style>
+  window.addEventListener("DOMContentLoaded", applyLanguage);
+</script>
 </head>
 
 <body>
+  <button class="language-btn" onclick="toggleLanguage()" aria-label="Change language">IT</button>
 
-  <nav>
-    <div class="logo">Martina Kenna</div>
+  <nav class="site-nav">
+    <a class="logo" href="index.html">Martina Kenna</a>
 
     <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
+      <a href="about.html" class="" data-en="About" data-it="About">About</a>
+      <a href="projects.html" class="" data-en="Projects" data-it="Projects">Projects</a>
     </div>
   </nav>
 
   <section class="hero">
-
     <div class="hero-left">
+      <div class="lang-en">
+        <p class="eyebrow">Artificial Intelligence · Applied Research · Software</p>
 
-      <p class="eyebrow">Artificial Intelligence · Applied Research · Software</p>
+        <h1>
+          Building <br>
+          <span class="accent">intelligent</span> <br>
+          systems
+        </h1>
 
-      <h1>
-        Building <br>
-        <span class="accent">intelligent</span> <br>
-        systems
-      </h1>
+        <p class="description">
+          I am an Artificial Intelligence MSc student with a Bachelor's degree in Computer Science.
+          After my undergraduate studies, I continued working on AI through university projects,
+          research activities and applied technical experiences.
+        </p>
 
-      <p class="description">
-        I am an Artificial Intelligence MSc student with a background in Computer Science.
-        I am interested in the design and development of intelligent systems, from machine
-        learning models and data-driven pipelines to software tools that can be tested,
-        evaluated and used in practical contexts.
-      </p>
+        <p class="description">
+          My interests are broad within artificial intelligence: machine learning, data-driven experimentation,
+          optimisation, computer vision, robotics and software development. I am especially interested in how
+          intelligent systems are designed, evaluated and made reliable enough to be used outside ideal conditions.
+        </p>
 
-      <p class="description">
-        My work moves across applied AI, computer vision, robotics, optimisation and
-        experimental research. I like projects where technical choices matter: how data is
-        prepared, how models are evaluated, how systems behave outside ideal conditions and
-        how prototypes become reliable enough to be useful.
-      </p>
-
-      <div class="buttons">
-        <a href="projects.html" class="btn btn-primary">
-          View projects
-        </a>
-
-        <a href="about.html" class="btn btn-secondary">
-          About me
-        </a>
+        <div class="buttons">
+          <a href="projects.html" class="btn btn-primary">View projects</a>
+          <a href="about.html" class="btn btn-secondary">About me</a>
+        </div>
       </div>
 
+      <div class="lang-it">
+        <p class="eyebrow">Artificial Intelligence · Ricerca applicata · Software</p>
+
+        <h1>
+          Building <br>
+          <span class="accent">intelligent</span> <br>
+          systems
+        </h1>
+
+        <p class="description">
+          Sono una studentessa magistrale in Artificial Intelligence con una laurea triennale in Informatica.
+          Dopo il percorso triennale ho proseguito nell'ambito dell'AI, lavorando su progetti universitari,
+          attività di ricerca ed esperienze tecniche applicate.
+        </p>
+
+        <p class="description">
+          I miei interessi spaziano tra machine learning, sperimentazione sui dati, ottimizzazione,
+          computer vision, robotica e sviluppo software. Mi interessa soprattutto capire come i sistemi intelligenti
+          vengono progettati, valutati e resi abbastanza affidabili da funzionare anche fuori dalle condizioni ideali.
+        </p>
+
+        <div class="buttons">
+          <a href="projects.html" class="btn btn-primary">Vai ai progetti</a>
+          <a href="about.html" class="btn btn-secondary">About me</a>
+        </div>
+      </div>
     </div>
 
     <div class="hero-right">
-
       <div class="profile-card">
-
-        <img
-          src="images/avatar.png"
-          alt="Martina Kenna"
-          class="profile-image"
-        >
+        <img src="images/avatar.png" alt="Martina Kenna" class="profile-image" />
 
         <div class="profile-content">
-
           <h3>Martina Kenna</h3>
-
-          <p>
-            Artificial Intelligence MSc Student
-          </p>
+          <p>Artificial Intelligence MSc Student</p>
 
           <div class="socials">
-            <a href="https://github.com/MartinaKenna" target="_blank">
-              GitHub
-            </a>
-
-            <a href="https://linkedin.com/in/martina-kenna" target="_blank">
-              LinkedIn
-            </a>
-
-            <a href="mailto:martinakenna03@gmail.com">
-              Email
-            </a>
+            <a href="https://github.com/MartinaKenna" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/martina-kenna" target="_blank">LinkedIn</a>
+            <a href="mailto:martinakenna03@gmail.com">Email</a>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
-
 </body>
 </html>
