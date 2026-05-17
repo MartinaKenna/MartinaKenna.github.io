@@ -3,43 +3,440 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Martina Kenna</title>
-
-  <link rel="stylesheet" href="css/style.css" />
-  <script>
-  function applyLanguage() {
-    const lang = localStorage.getItem("lang") || "en";
-    document.body.classList.remove("lang-en", "lang-it");
-    document.body.classList.add("lang-" + lang);
-    document.documentElement.lang = lang;
-
-    document.querySelectorAll("[data-en][data-it]").forEach((el) => {
-      el.textContent = lang === "it" ? el.dataset.it : el.dataset.en;
-    });
-
-    const button = document.querySelector(".language-btn");
-    if (button) {
-      button.textContent = lang === "it" ? "EN" : "IT";
+  <style>
+    :root {
+      --bg: #0f0f10;
+      --surface: #17181c;
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #9b59b6;
+      --accent-dark: #7f3fa3;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 18px 55px rgba(0,0,0,0.28);
     }
-  }
 
-  function toggleLanguage() {
-    const current = localStorage.getItem("lang") || "en";
-    localStorage.setItem("lang", current === "en" ? "it" : "en");
-    applyLanguage();
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  window.addEventListener("DOMContentLoaded", applyLanguage);
-</script>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 32rem),
+        var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    body.lang-en .lang-en,
+    body.lang-it .lang-it {
+      display: block;
+    }
+
+    body.lang-en .lang-it,
+    body.lang-it .lang-en {
+      display: none;
+    }
+
+    .language-btn {
+      position: fixed;
+      top: 1.15rem;
+      left: 1.15rem;
+      z-index: 1001;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0.48rem 0.78rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: 0.2s ease;
+    }
+
+    .language-btn:hover {
+      border-color: rgba(155, 89, 182, 0.5);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .site-nav {
+      width: 100%;
+      padding: 1.5rem 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .hero,
+    .page {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 90px);
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .eyebrow {
+      margin-bottom: 1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      line-height: 0.95;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .description,
+    .subtitle,
+    .card p,
+    .project-card p {
+      color: var(--muted);
+    }
+
+    .description {
+      max-width: 720px;
+      margin-bottom: 1rem;
+      font-size: 1.08rem;
+    }
+
+    .description strong,
+    .highlight {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 150px;
+      padding: 0.9rem 1.35rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.22s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: white;
+      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(155, 89, 182, 0.5);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      width: 100%;
+      max-width: 285px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 285px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-content {
+      padding: 1.25rem;
+    }
+
+    .profile-content h3 {
+      margin-bottom: 0.35rem;
+      font-size: 1.15rem;
+    }
+
+    .profile-content p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.15rem;
+    }
+
+    .socials a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .socials a:hover {
+      color: white;
+    }
+
+    .page {
+      padding: 5rem 0 4rem;
+    }
+
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .subtitle {
+      max-width: 780px;
+      margin-top: 1.4rem;
+      font-size: 1.08rem;
+    }
+
+    .card {
+      margin-top: 1.4rem;
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card p {
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .projects {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 18px 55px rgba(0,0,0,0.22);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(155, 89, 182, 0.38);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 135px;
+      border-radius: 18px;
+      object-fit: cover;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .project-image.logo-image {
+      object-fit: contain;
+      padding: 1.4rem;
+      background: white;
+    }
+
+    .project-card h2 {
+      margin-bottom: 0.35rem;
+      font-size: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .project-meta {
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 4rem 0;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero-left {
+        text-align: center;
+      }
+
+      .description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons,
+      .socials {
+        justify-content: center;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .site-nav {
+        padding: 1.3rem 5%;
+      }
+
+      .language-btn {
+        position: static;
+        margin: 0 0 0 5%;
+      }
+
+      .page {
+        padding-top: 4rem;
+      }
+
+      .card {
+        padding: 1.4rem;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        height: 190px;
+      }
+    }
+</style>
+  
+  <script>
+    function applyLanguage() {
+      const lang = localStorage.getItem("lang") || "en";
+      document.body.classList.remove("lang-en", "lang-it");
+      document.body.classList.add("lang-" + lang);
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-en][data-it]").forEach((el) => {
+        el.textContent = lang === "it" ? el.dataset.it : el.dataset.en;
+      });
+
+      const button = document.querySelector(".language-btn");
+      if (button) button.textContent = lang === "it" ? "EN" : "IT";
+    }
+
+    function toggleLanguage() {
+      const current = localStorage.getItem("lang") || "en";
+      localStorage.setItem("lang", current === "en" ? "it" : "en");
+      applyLanguage();
+    }
+
+    window.addEventListener("DOMContentLoaded", applyLanguage);
+  </script>
+
 </head>
-
 <body>
   <button class="language-btn" onclick="toggleLanguage()" aria-label="Change language">IT</button>
 
   <nav class="site-nav">
     <a class="logo" href="index.html">Martina Kenna</a>
-
     <div class="nav-links">
       <a href="about.html" class="" data-en="About" data-it="About">About</a>
       <a href="projects.html" class="" data-en="Projects" data-it="Projects">Projects</a>
@@ -51,22 +448,18 @@
       <div class="lang-en">
         <p class="eyebrow">Artificial Intelligence · Applied Research · Software</p>
 
-        <h1>
-          Building <br>
-          <span class="accent">intelligent</span> <br>
-          systems
-        </h1>
+        <h1>Building <br><span class="accent">intelligent</span> <br>systems</h1>
 
         <p class="description">
           I am an Artificial Intelligence MSc student with a Bachelor's degree in Computer Science.
-          After my undergraduate studies, I continued working on AI through university projects,
+          After my undergraduate studies, I continued my path in AI through university projects,
           research activities and applied technical experiences.
         </p>
 
         <p class="description">
           My interests are broad within artificial intelligence: machine learning, data-driven experimentation,
           optimisation, computer vision, robotics and software development. I am especially interested in how
-          intelligent systems are designed, evaluated and made reliable enough to be used outside ideal conditions.
+          intelligent systems are designed, evaluated and made reliable enough to work outside ideal conditions.
         </p>
 
         <div class="buttons">
@@ -78,15 +471,11 @@
       <div class="lang-it">
         <p class="eyebrow">Artificial Intelligence · Ricerca applicata · Software</p>
 
-        <h1>
-          Building <br>
-          <span class="accent">intelligent</span> <br>
-          systems
-        </h1>
+        <h1>Building <br><span class="accent">intelligent</span> <br>systems</h1>
 
         <p class="description">
           Sono una studentessa magistrale in Artificial Intelligence con una laurea triennale in Informatica.
-          Dopo il percorso triennale ho proseguito nell'ambito dell'AI, lavorando su progetti universitari,
+          Dopo il percorso triennale ho proseguito nell'ambito dell'AI, tra progetti universitari,
           attività di ricerca ed esperienze tecniche applicate.
         </p>
 
