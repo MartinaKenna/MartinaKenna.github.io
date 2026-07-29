@@ -10,8 +10,8 @@
       --surface: #17181c;
       --text: #f4f4f5;
       --muted: #a1a1aa;
-      --accent: #9b59b6;
-      --accent-dark: #7f3fa3;
+      --accent: #d4d4d8;
+      --accent-dark: #52525b;
       --border: rgba(255,255,255,0.08);
       --shadow: 0 18px 55px rgba(0,0,0,0.28);
     }
@@ -31,7 +31,7 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 32rem),
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 32rem),
         var(--bg);
       line-height: 1.65;
     }
@@ -66,7 +66,7 @@
     }
 
     .language-btn:hover {
-      border-color: rgba(155, 89, 182, 0.5);
+      border-color: rgba(255, 255, 255, 0.35);
       background: rgba(255,255,255,0.09);
     }
 
@@ -133,6 +133,7 @@
 
     .accent {
       color: var(--accent);
+  font-weight: 700;
     }
 
     .description,
@@ -175,13 +176,13 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
+      color: #18181b;
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.14);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
+      box-shadow: 0 16px 38px rgba(255, 255, 255, 0.2);
     }
 
     .btn-secondary {
@@ -192,7 +193,7 @@
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: rgba(155, 89, 182, 0.5);
+      border-color: rgba(255, 255, 255, 0.35);
       background: rgba(255,255,255,0.06);
     }
 
@@ -303,7 +304,7 @@
 
     .project-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(155, 89, 182, 0.38);
+      border-color: rgba(255, 255, 255, 0.28);
     }
 
     .project-image {
@@ -322,6 +323,17 @@
       background: white;
     }
 
+    .project-image.placeholder-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
     .project-card h2 {
       margin-bottom: 0.35rem;
       font-size: 1.25rem;
@@ -332,6 +344,48 @@
       margin-bottom: 0.8rem;
       color: var(--accent);
       font-size: 0.9rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+    }
+
+    .photo-credit {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .photo-credit a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+
+    .section-heading {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-heading:first-of-type {
+      margin-top: 2rem;
+      padding-top: 0;
+      border-top: none;
     }
 
     .footer {
@@ -449,8 +503,8 @@
         <p class="eyebrow">Selected work</p>
         <h1>Projects <br><span class="accent">and research</span></h1>
         <p class="subtitle">
-          A selection of research, university and personal projects across applied AI,
-          software development, computer vision and robotics.
+          A selection of university and personal projects, mostly around computer vision,
+          plus applied AI, software development and robotics.
         </p>
       </section>
     </div>
@@ -460,57 +514,13 @@
         <p class="eyebrow">Selected work</p>
         <h1>Progetti <br><span class="accent">e ricerca</span></h1>
         <p class="subtitle">
-          Una selezione di progetti di ricerca, universitari e personali legati ad AI applicata,
-          sviluppo software, computer vision e robotica.
+          Una selezione di progetti universitari e personali, per lo più legati alla computer vision,
+          più AI applicata, sviluppo software e robotica.
         </p>
       </section>
     </div>
 
     <section class="projects">
-
-      <article class="project-card">
-        <img src="images/datalogic_logo.png" alt="Datalogic" class="project-image logo-image" />
-        <div class="project-content">
-          <div class="lang-en">
-            <h2>Computer Vision Research Internship</h2>
-            <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
-            <p>
-              Applied research on deep learning for industrial perception and visual understanding.
-              The work involved benchmarking, model evaluation, robustness analysis and optimisation for embedded deployment.
-            </p>
-          </div>
-          <div class="lang-it">
-            <h2>Computer Vision Research Internship</h2>
-            <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
-            <p>
-              Ricerca applicata su deep learning per percezione industriale e visual understanding.
-              Il lavoro ha incluso benchmarking, valutazione dei modelli, analisi della robustezza e ottimizzazione per deployment embedded.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-image" />
-        <div class="project-content">
-          <div class="lang-en">
-            <h2>Computer Vision Engineer for Autonomous Driving</h2>
-            <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
-            <p>
-              Real-time perception work for an autonomous driving system using ROS2,
-              stereo vision and object detection under strict latency constraints.
-            </p>
-          </div>
-          <div class="lang-it">
-            <h2>Perception for Autonomous Driving</h2>
-            <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
-            <p>
-              Lavoro sulla percezione real-time per un sistema di guida autonoma, con ROS2,
-              stereo vision e object detection sotto vincoli di latenza stringenti.
-            </p>
-          </div>
-        </div>
-      </article>
 
       <article class="project-card">
         <img src="images/medical_xray.jpg" alt="Synthetic chest X-ray generation" class="project-image" />
@@ -541,17 +551,49 @@
             <h2>Robotic Arm Teleoperation</h2>
             <p class="project-meta">Personal Project · 2026</p>
             <p>
-              Real-time robotic teleoperation system using hand tracking, ROS2 and RViz,
+              Real-time robotic teleoperation system using computer vision hand tracking, ROS2 and RViz,
               with gesture-based control for robotic arms and grippers.
             </p>
+            <a href="https://github.com/MartinaKenna/dual-arm-teleop-proj" class="project-link" target="_blank">View on GitHub</a>
           </div>
           <div class="lang-it">
             <h2>Robotic Arm Teleoperation</h2>
             <p class="project-meta">Personal Project · 2026</p>
             <p>
-              Sistema di teleoperazione robotica real-time con hand tracking, ROS2 e RViz,
+              Sistema di teleoperazione robotica real-time con hand tracking via computer vision, ROS2 e RViz,
               basato su gesture per il controllo di bracci robotici e gripper.
             </p>
+            <a href="https://github.com/MartinaKenna/dual-arm-teleop-proj" class="project-link" target="_blank">Vedi su GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="images/wristsense.jpg" alt="ESP32 wrist sensor board" class="project-image" />
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>WristSense</h2>
+            <p class="project-meta">University Project · 2026</p>
+            <p>
+              An ESP32 wrist sensor that reads IMU data and classifies gestures both with a simple
+              threshold rule and a small trained model running on the chip. It streams everything to
+              InfluxDB and Grafana over MQTT, HTTP and CoAP to compare latency across protocols,
+              plus a ROS2 simulation where the gestures drive a TurtleBot around.
+            </p>
+            <a href="https://github.com/MartinaKenna/wristsense" class="project-link" target="_blank">View on GitHub</a>
+            <a href="https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg" class="photo-credit" target="_blank">Photo: "ESP32 Dev Board" by Edwiyanto, CC BY-SA 4.0</a>
+          </div>
+          <div class="lang-it">
+            <h2>WristSense</h2>
+            <p class="project-meta">University Project · 2026</p>
+            <p>
+              Un sensore da polso su ESP32 che legge i dati IMU e classifica i gesti sia con una
+              regola a soglia sia con un modellino allenato che gira sul chip. Manda tutto a
+              InfluxDB e Grafana via MQTT, HTTP e CoAP per confrontare le latenze tra protocolli,
+              e c'è anche una simulazione ROS2 dove i gesti guidano un TurtleBot in giro.
+            </p>
+            <a href="https://github.com/MartinaKenna/wristsense" class="project-link" target="_blank">Vedi su GitHub</a>
+            <a href="https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg" class="photo-credit" target="_blank">Foto: "ESP32 Dev Board" di Edwiyanto, CC BY-SA 4.0</a>
           </div>
         </div>
       </article>
@@ -566,6 +608,7 @@
               Autonomous game-playing agent for Tablut based on adversarial search,
               heuristics and decision-making under time constraints.
             </p>
+            <a href="https://github.com/MartinaKenna/TablutArtificialPlayers" class="project-link" target="_blank">View on GitHub</a>
           </div>
           <div class="lang-it">
             <h2>Tablut AI Agent</h2>
@@ -574,6 +617,7 @@
               Agente autonomo per il gioco Tablut basato su ricerca avversariale,
               euristiche e decision-making con vincoli di tempo.
             </p>
+            <a href="https://github.com/MartinaKenna/TablutArtificialPlayers" class="project-link" target="_blank">Vedi su GitHub</a>
           </div>
         </div>
       </article>
@@ -588,6 +632,7 @@
               Experimental distributed social platform focused on decentralised communication
               and peer-to-peer interaction models.
             </p>
+            <a href="https://github.com/MartinaKenna/SocialMesh" class="project-link" target="_blank">View on GitHub</a>
           </div>
           <div class="lang-it">
             <h2>SocialMesh</h2>
@@ -596,28 +641,7 @@
               Piattaforma social distribuita sperimentale, progettata intorno a comunicazione decentralizzata
               e modelli di interazione peer-to-peer.
             </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="images/python.jpg" alt="Computational Intelligence" class="project-image" />
-        <div class="project-content">
-          <div class="lang-en">
-            <h2>Computational Intelligence</h2>
-            <p class="project-meta">Research Internship · 2024</p>
-            <p>
-              Work on evolutionary algorithms and fuzzy optimisation systems,
-              including implementation, validation and extension of Python modules.
-            </p>
-          </div>
-          <div class="lang-it">
-            <h2>Computational Intelligence</h2>
-            <p class="project-meta">Research Internship · 2024</p>
-            <p>
-              Lavoro su algoritmi evolutivi e sistemi di ottimizzazione fuzzy,
-              con implementazione, validazione ed estensione di moduli Python.
-            </p>
+            <a href="https://github.com/MartinaKenna/SocialMesh" class="project-link" target="_blank">Vedi su GitHub</a>
           </div>
         </div>
       </article>

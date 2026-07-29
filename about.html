@@ -10,8 +10,8 @@
       --surface: #17181c;
       --text: #f4f4f5;
       --muted: #a1a1aa;
-      --accent: #9b59b6;
-      --accent-dark: #7f3fa3;
+      --accent: #d4d4d8;
+      --accent-dark: #52525b;
       --border: rgba(255,255,255,0.08);
       --shadow: 0 18px 55px rgba(0,0,0,0.28);
     }
@@ -31,7 +31,7 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 32rem),
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 32rem),
         var(--bg);
       line-height: 1.65;
     }
@@ -66,7 +66,7 @@
     }
 
     .language-btn:hover {
-      border-color: rgba(155, 89, 182, 0.5);
+      border-color: rgba(255, 255, 255, 0.35);
       background: rgba(255,255,255,0.09);
     }
 
@@ -133,6 +133,7 @@
 
     .accent {
       color: var(--accent);
+  font-weight: 700;
     }
 
     .description,
@@ -175,13 +176,13 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
+      color: #18181b;
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.14);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
+      box-shadow: 0 16px 38px rgba(255, 255, 255, 0.2);
     }
 
     .btn-secondary {
@@ -192,7 +193,7 @@
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: rgba(155, 89, 182, 0.5);
+      border-color: rgba(255, 255, 255, 0.35);
       background: rgba(255,255,255,0.06);
     }
 
@@ -303,7 +304,7 @@
 
     .project-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(155, 89, 182, 0.38);
+      border-color: rgba(255, 255, 255, 0.28);
     }
 
     .project-image {
@@ -322,6 +323,17 @@
       background: white;
     }
 
+    .project-image.placeholder-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
     .project-card h2 {
       margin-bottom: 0.35rem;
       font-size: 1.25rem;
@@ -332,6 +344,48 @@
       margin-bottom: 0.8rem;
       color: var(--accent);
       font-size: 0.9rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+    }
+
+    .photo-credit {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .photo-credit a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+
+    .section-heading {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-heading:first-of-type {
+      margin-top: 2rem;
+      padding-top: 0;
+      border-top: none;
     }
 
     .footer {
@@ -449,28 +503,27 @@
         <p class="eyebrow">About</p>
         <h1>Background <br><span class="accent">and direction</span></h1>
         <p class="subtitle">
-          I come from a Computer Science background and I am now specialising in Artificial Intelligence.
-          My work connects technical development, applied research and a practical interest in how AI systems behave in real contexts.
+          I come from a Computer Science background and I'm now specialising in Artificial Intelligence.
+          My work sits between technical development, applied research and a genuine interest in how AI systems hold up in the real world.
         </p>
       </section>
 
       <section class="card">
         <p>
-          I started from Computer Science because I wanted to understand how software systems are built.
-          During my studies, I became increasingly interested in artificial intelligence, especially in the parts
-          that involve learning from data, evaluating models and turning experiments into working systems.
+          I started with Computer Science because I wanted to understand how software actually gets built.
+          Along the way I got more and more drawn to artificial intelligence, especially the parts about
+          learning from data, evaluating models honestly and turning experiments into things that actually run.
         </p>
 
         <p>
-          My academic and project experience includes machine learning, optimisation, computer vision, medical imaging,
-          robotics and data-centric experimentation. I like working across the full process: understanding the problem,
-          preparing the data, building the pipeline, evaluating the results and improving the system step by step.
+          My projects span machine learning, optimisation, computer vision, medical imaging, robotics and
+          data-heavy experimentation. I like owning the whole process: understanding the problem, wrangling the data,
+          building the pipeline, checking the results, and iterating until it's actually good.
         </p>
 
         <p>
-          I try to keep a practical but rigorous approach. For me, a good technical project is not just about obtaining
-          a result once. It is about understanding why that result happens, where the system fails and what can be done
-          to make it more robust.
+          I try to stay practical without cutting corners. Getting a result once isn't the bar for me,
+          I want to know why it happened, where it breaks, and what it takes to make it hold up.
         </p>
 
         <div class="buttons">
@@ -485,29 +538,27 @@
         <p class="eyebrow">About</p>
         <h1>Percorso <br><span class="accent">e direzione</span></h1>
         <p class="subtitle">
-          Ho una formazione in Informatica e sto proseguendo il mio percorso specializzandomi in Artificial Intelligence.
-          Il mio lavoro unisce sviluppo tecnico, ricerca applicata e interesse pratico per il comportamento dei sistemi AI in contesti reali.
+          Vengo da una formazione in Informatica e ora mi sto specializzando in Artificial Intelligence.
+          Il mio lavoro sta a metà tra sviluppo tecnico, ricerca applicata e un interesse genuino per come i sistemi AI si comportano nel mondo reale.
         </p>
       </section>
 
       <section class="card">
         <p>
-          Sono partita dall'Informatica perché volevo capire come si progettano e si costruiscono i sistemi software.
-          Durante il percorso universitario mi sono avvicinata sempre di più all'intelligenza artificiale,
-          in particolare agli aspetti legati all'apprendimento dai dati, alla valutazione dei modelli
-          e alla trasformazione degli esperimenti in sistemi funzionanti.
+          Sono partita dall'Informatica perché volevo capire come si costruisce davvero il software.
+          Strada facendo mi sono avvicinata sempre di più all'intelligenza artificiale, in particolare
+          alla parte di imparare dai dati, valutare i modelli in modo onesto e trasformare gli esperimenti in cose che funzionano davvero.
         </p>
 
         <p>
-          Le mie esperienze accademiche e progettuali includono machine learning, ottimizzazione, computer vision,
-          medical imaging, robotica e sperimentazione data-centric. Mi piace seguire l'intero processo:
-          capire il problema, preparare i dati, costruire la pipeline, valutare i risultati e migliorare il sistema passo dopo passo.
+          I miei progetti toccano machine learning, ottimizzazione, computer vision, medical imaging, robotica
+          e sperimentazione data-heavy. Mi piace seguire tutto il processo: capire il problema, sistemare i dati,
+          costruire la pipeline, controllare i risultati e migliorare finché non è davvero buono.
         </p>
 
         <p>
-          Cerco di mantenere un approccio pratico ma rigoroso. Per me un buon progetto tecnico non significa solo ottenere
-          un risultato una volta, ma capire perché quel risultato si verifica, dove il sistema fallisce e cosa si può fare
-          per renderlo più robusto.
+          Cerco di restare pratica senza tagliare gli angoli. Ottenere un risultato una volta non mi basta,
+          voglio capire perché è successo, dove si rompe e cosa serve per renderlo solido.
         </p>
 
         <div class="buttons">

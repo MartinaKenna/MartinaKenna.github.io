@@ -10,8 +10,8 @@
       --surface: #17181c;
       --text: #f4f4f5;
       --muted: #a1a1aa;
-      --accent: #9b59b6;
-      --accent-dark: #7f3fa3;
+      --accent: #d4d4d8;
+      --accent-dark: #52525b;
       --border: rgba(255,255,255,0.08);
       --shadow: 0 18px 55px rgba(0,0,0,0.28);
     }
@@ -31,7 +31,7 @@
       font-family: Inter, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(155, 89, 182, 0.16), transparent 32rem),
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 32rem),
         var(--bg);
       line-height: 1.65;
     }
@@ -66,7 +66,7 @@
     }
 
     .language-btn:hover {
-      border-color: rgba(155, 89, 182, 0.5);
+      border-color: rgba(255, 255, 255, 0.35);
       background: rgba(255,255,255,0.09);
     }
 
@@ -133,6 +133,7 @@
 
     .accent {
       color: var(--accent);
+  font-weight: 700;
     }
 
     .description,
@@ -175,13 +176,13 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      color: white;
-      box-shadow: 0 12px 32px rgba(155, 89, 182, 0.32);
+      color: #18181b;
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.14);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 38px rgba(155, 89, 182, 0.42);
+      box-shadow: 0 16px 38px rgba(255, 255, 255, 0.2);
     }
 
     .btn-secondary {
@@ -192,7 +193,7 @@
 
     .btn-secondary:hover {
       transform: translateY(-2px);
-      border-color: rgba(155, 89, 182, 0.5);
+      border-color: rgba(255, 255, 255, 0.35);
       background: rgba(255,255,255,0.06);
     }
 
@@ -303,7 +304,7 @@
 
     .project-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(155, 89, 182, 0.38);
+      border-color: rgba(255, 255, 255, 0.28);
     }
 
     .project-image {
@@ -322,6 +323,17 @@
       background: white;
     }
 
+    .project-image.placeholder-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
     .project-card h2 {
       margin-bottom: 0.35rem;
       font-size: 1.25rem;
@@ -332,6 +344,48 @@
       margin-bottom: 0.8rem;
       color: var(--accent);
       font-size: 0.9rem;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+    }
+
+    .photo-credit {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .photo-credit a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+
+    .section-heading {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .section-heading:first-of-type {
+      margin-top: 2rem;
+      padding-top: 0;
+      border-top: none;
     }
 
     .footer {
@@ -446,20 +500,20 @@
   <section class="hero">
     <div class="hero-left">
       <div class="lang-en">
-        <p class="eyebrow">Artificial Intelligence · Applied Research · Software</p>
+        <p class="eyebrow">Computer Vision · Artificial Intelligence · Applied Research</p>
 
-        <h1>Building <br><span class="accent">intelligent</span> <br>systems</h1>
+        <h1>Hi, I'm <br><span class="accent">Martina</span></h1>
 
         <p class="description">
-          I am an Artificial Intelligence MSc student with a Bachelor's degree in Computer Science.
-          After my undergraduate studies, I continued my path in AI through university projects,
-          research activities and applied technical experiences.
+          I'm an AI MSc student with a Computer Science background, focused on computer vision.
+          Since finishing my Bachelor's I've kept building on that through university projects,
+          research work and hands-on technical experience.
         </p>
 
         <p class="description">
-          My interests are broad within artificial intelligence: machine learning, data-driven experimentation,
-          optimisation, computer vision, robotics and software development. I am especially interested in how
-          intelligent systems are designed, evaluated and made reliable enough to work outside ideal conditions.
+          Most of my work is computer vision: stereo vision, detection, tracking, image generation.
+          I'm also into machine learning more broadly, robotics and optimisation. What interests me
+          most is making vision and intelligent systems reliable enough to hold up once they leave the lab.
         </p>
 
         <div class="buttons">
@@ -469,20 +523,21 @@
       </div>
 
       <div class="lang-it">
-        <p class="eyebrow">Artificial Intelligence · Ricerca applicata · Software</p>
+        <p class="eyebrow">Computer Vision · Artificial Intelligence · Ricerca applicata</p>
 
-        <h1>Building <br><span class="accent">intelligent</span> <br>systems</h1>
+        <h1>Ciao, sono <br><span class="accent">Martina</span></h1>
 
         <p class="description">
-          Sono una studentessa magistrale in Artificial Intelligence con una laurea triennale in Informatica.
-          Dopo il percorso triennale ho proseguito nell'ambito dell'AI, tra progetti universitari,
-          attività di ricerca ed esperienze tecniche applicate.
+          Sono una studentessa magistrale in Artificial Intelligence, con una base in Informatica e un focus
+          sulla computer vision. Da lì ho continuato a costruirci sopra tra progetti universitari,
+          ricerca ed esperienze tecniche pratiche.
         </p>
 
         <p class="description">
-          I miei interessi spaziano tra machine learning, sperimentazione sui dati, ottimizzazione,
-          computer vision, robotica e sviluppo software. Mi interessa soprattutto capire come i sistemi intelligenti
-          vengono progettati, valutati e resi abbastanza affidabili da funzionare anche fuori dalle condizioni ideali.
+          Gran parte del mio lavoro è computer vision: stereo vision, detection, tracking, generazione di immagini.
+          Mi interessa anche il machine learning in generale, la robotica e l'ottimizzazione. La cosa che mi
+          interessa di più è rendere la visione artificiale e i sistemi intelligenti abbastanza affidabili
+          da reggere anche fuori dal laboratorio.
         </p>
 
         <div class="buttons">
@@ -498,7 +553,7 @@
 
         <div class="profile-content">
           <h3>Martina Kenna</h3>
-          <p>Artificial Intelligence MSc Student</p>
+          <p>Computer Vision · AI MSc Student</p>
 
           <div class="socials">
             <a href="https://github.com/MartinaKenna" target="_blank">GitHub</a>
@@ -509,5 +564,78 @@
       </div>
     </div>
   </section>
+
+  <main class="page">
+    <h2 class="section-heading" data-en="Experience" data-it="Esperienza">Experience</h2>
+    <section class="projects">
+
+      <article class="project-card">
+        <img src="images/datalogic_logo.png" alt="Datalogic" class="project-image logo-image" />
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Computer Vision Research Internship</h2>
+            <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
+            <p>
+              Applied research on deep learning for industrial perception and visual understanding.
+              The work involved benchmarking, model evaluation, robustness analysis and optimisation for embedded deployment.
+            </p>
+          </div>
+          <div class="lang-it">
+            <h2>Computer Vision Research Internship</h2>
+            <p class="project-meta">Datalogic USA · Eugene, Oregon · 2025–2026</p>
+            <p>
+              Ricerca applicata su deep learning per percezione industriale e visual understanding.
+              Il lavoro ha incluso benchmarking, valutazione dei modelli, analisi della robustezza e ottimizzazione per deployment embedded.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="images/unibo_motorsport.png" alt="UniBo Motorsport" class="project-image" />
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Computer Vision Engineer for Autonomous Driving</h2>
+            <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
+            <p>
+              Real-time perception work for an autonomous driving system using ROS2,
+              stereo vision and object detection under strict latency constraints.
+            </p>
+          </div>
+          <div class="lang-it">
+            <h2>Perception for Autonomous Driving</h2>
+            <p class="project-meta">UniBo Motorsport Driverless · 2025</p>
+            <p>
+              Lavoro sulla percezione real-time per un sistema di guida autonoma, con ROS2,
+              stereo vision e object detection sotto vincoli di latenza stringenti.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <img src="images/python.jpg" alt="Computational Intelligence" class="project-image" />
+        <div class="project-content">
+          <div class="lang-en">
+            <h2>Computational Intelligence</h2>
+            <p class="project-meta">Research Internship · 2024</p>
+            <p>
+              Work on evolutionary algorithms and fuzzy optimisation systems,
+              including implementation, validation and extension of Python modules.
+            </p>
+          </div>
+          <div class="lang-it">
+            <h2>Computational Intelligence</h2>
+            <p class="project-meta">Research Internship · 2024</p>
+            <p>
+              Lavoro su algoritmi evolutivi e sistemi di ottimizzazione fuzzy,
+              con implementazione, validazione ed estensione di moduli Python.
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
 </body>
 </html>
